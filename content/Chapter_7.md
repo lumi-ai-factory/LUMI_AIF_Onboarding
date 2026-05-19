@@ -97,7 +97,7 @@ module load lumi-aif-singularity-bindings # bindings give LUMI containers access
 
 
 # 2. Set necessary environment variables
-MIOPEN_DIR=$(mktemp -d)my_first_slurm_script.sh
+MIOPEN_DIR=$(mktemp -d)
 export MIOPEN_CUSTOM_CACHE_DIR=$MIOPEN_DIR/cache
 export MIOPEN_USER_DB=$MIOPEN_DIR/config
 
@@ -156,7 +156,28 @@ Congratulations, your job is officially in the Slurm queue!
 > If after submitting a Slurm script you're seeing some error message, take a look at our [page of common batch job errors](https://docs.csc.fi/support/faq/why-does-my-batch-job-fail/)
 
 
-## Step-by-step: submit → monitor → check output — sbatch, squeue, sacct, and where to find the output file.
+## Monitoring Your Job and Checking Outputs
+
+Once your job is submitted, it enters the queue. You can check its status using the `squeue` command:
+
+```bash
+squeue -u $USER
+```
+If your job is running, you will see `R` under the state column. If it's waiting for resources, you will see `PD` (Pending).
+
+**Where did the output go?**
+Unlike running a script on your laptop where text prints directly to your screen, Slurm captures everything your script "prints" and saves it to a file in the same directory. It will be named something like `slurm-1234567.out` (where the number is your Job ID).
+
+To check the live progress of your job (like watching the model weights load in real-time), you can "follow" the log file:
+```bash
+tail -f slurm-1234567.out
+```
+*(Press `Ctrl+C` to stop watching the file. This doesn't stop the job!)*
+
+You can also read the entire file by opening it:
+```bash
+less slurm-1234567.out
+```
 
 
 ## Interactive Jobs: Running Code and AI Models in Real-Time
@@ -207,42 +228,7 @@ In `small-g` and `dev-g` (per-GCD allocation, not full node): each GCD is billed
 > You're effectively billed per "proportion" of the node you're using. GPU nodes are split into 8 equal parts. 
 
 
-- **How resources are spent:** BUs are calculated based on the hardware you request and how long you occupy it. You're billed for the entirety of the billing units while they are allocated to your job. However, if your Slurm script requested 2h, but the job finished in 1h, the allocated resources are released.
-
-    >[!warning] Responsibility for efficient hardware utilisation is on you.
-    > If you requested too much resources and are underutilising the hardware (e.g., running a tiny model on multiple GPUs), you are billed for the **allocated** resources regardless of how efficiently you're utilising them. 
-    
-- **The GPU Factor:** billing units are separate for GPU and CPU partitions and are called GPU hours and CPU hours respectively. GPUs are highly valuable and GPU hours are significantly more expensive. To calculate how many GPU hours your script used:
-
-    ```
-    GPU-hours-billed = 4 * runtime-of-job
-    ```
-
-    i.e., one node hours correspond to 4 GPU-hours. If you allocate 4 nodes in the standard-g partition and that your job runs for 24 hours, you will consume
-
-    ```
-    4 * 4 * 24 = 384 GPU-hours
-    ```
-
-    For the small-g and dev-g Slurm partitions, where allocation can be done at the level of Graphics Compute Dies (GCD), you will be billed at a 0.5 rate per GCD allocated. However, if you allocate more than 8 CPU cores or more than 64 GB of memory per GCD, you will be billed per slice of 8 cores or 64 GB of memory.
-
-- **Walltime is a hard limit:** If you ask Slurm for 2 hours (#SBATCH --time=02:00:00), but your job wasn't yet complete and the code or AI model were still running, the job will be strictly terminated at exactly 2 hours. Always give your jobs a little bit of "buffer time" to ensure they complete cleanly!
+- **Walltime is a hard limit:** If you ask Slurm for 2 hours (`#SBATCH --time=02:00:00`), but your job isn't complete when time runs out, the job will be strictly terminated. Always give your jobs a little bit of "buffer time" to ensure they complete cleanly!
 
 To find out more about GPU, CPU and storage billing:
 [👉 Read the official Breakdown of LUMI Billing Policies](https://docs.lumi-supercomputer.eu/runjobs/lumi_env/billing/)
-
-
-
-
-## Overlapping 
-'jumping' into the shell of the Compute Node of your batch job
-
-## Interactive Slurm jobs ?
-https://docs.lumi-supercomputer.eu/runjobs/scheduled-jobs/interactive/ 
-
-
-## Billing
-Explain billing units and how they're spent (only for used resources, but all the booked resources)
-
-To check the amount of resources of your project see [Daily Management](https://docs.lumi-supercomputer.eu/runjobs/lumi_env/dailymanagement/)
-
