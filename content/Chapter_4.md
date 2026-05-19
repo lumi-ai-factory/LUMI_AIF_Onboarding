@@ -61,9 +61,12 @@ Within those **hardware** partitions, there are something known as **Slurm parti
 
 When you book a full GPU node on LUMI-G, here is exactly what you get inside that single physical server:
 
-*   **1× 64-core CPU:** An AMD EPYC processor with 512 GB of standard RAM. This acts as the manager, handling data loading and feeding it to the GPUs. However, out of these 64 cores, only 56 are available fo you to use as the rest are reserved for the operating system. 
-*   **4× AMD MI250X GPUs:** The incredibly powerful accelerators where your AI models are actually trained.
+*   **1 × 64-core CPU:** An AMD EPYC processor with 512 GB of standard RAM. This acts as the manager, handling data loading and feeding it to the GPUs. However, out of these 64 cores, only 56 are available fo you to use as the rest are reserved for the operating system. 
+*   **8 × 64gb DDR4 RAM:** totaling 512GB per node used by the CPU to load datasets, models, run data preprocessing and hold information before sending it to the GPU.  
+*   **4 × AMD MI250X GPUs:** The incredibly powerful accelerators where your AI models are actually trained.
 *   **Zero Local Storage:** There are no hard drives inside the compute nodes! They are connected directly to LUMI's massive, high-speed network storage.
+
+![LUMI-G Hardware](./assets/LUMI_G_Hardware.svg)
 
 #### The "GPU vs. GCD" Confusion (Important!)
 This is one of the most important concepts to understand about LUMI's hardware. 

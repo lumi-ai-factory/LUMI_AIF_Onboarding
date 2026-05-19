@@ -24,3 +24,5 @@ e.g., "Clone the LUMI AI Guide repo, load the container, and submit your first G
 ## Help
 Contact [LUMI's help desk](https://docs.lumi-supercomputer.eu/helpdesk/)
 ? OR [User support](https://lumi-ai-factory.eu/user-support/)
+
+Don't be afraid to talk to AI and ask it questions about how something works and why we do this or that, and why something doesn't work. It might not know LUMI-specific things (turn to us for that!), but it can very accessibly explain you what's happening in a Slurm script or in a Python code.

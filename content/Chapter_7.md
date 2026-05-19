@@ -35,7 +35,7 @@ Here is what a simple AI script may look like:
 
 ```bash
 #!/bin/bash
-#SBATCH --project=project_462000123      # Identifies your organization's project
+#SBATCH --project=project_462xxxxxx      # Identifies your organization's project
 #SBATCH --partition=small-g              # Choosing the Slurm partition and the hardware partition (-g for GPU)
 #SBATCH --nodes=1                        # Requesting 1 physical server node
 #SBATCH --ntasks-per-node=1              # Run one instance ('task') of the script at a time 
@@ -64,6 +64,7 @@ singularity run /appl/local/laifs/containers/lumi-multitorch-latest.sif run_ai.p
 > [!note] Reminder: GPUs vs. GCDs in Slurm
 > Notice the `--gpus-per-node=2` flag above? Remember from Chapter 4 that Slurm considers each **GCD** (half of a physical MI250X chip) as one GPU. So requesting 2 "GPUs" gives you exactly 1 physical MI250X chip.
 
+
 ## Handing the Ticket to Slurm
 LUMI AI Guide and examples of AI scripts usually contain this Slurm script and you only need to edit it with your actual `--project=` which will be 'billed' for the job.
 Once you've edited this file (let's call it `run_ai.sh`), you submit it to the queue using the `sbatch` command in your terminal:
@@ -72,9 +73,90 @@ Once you've edited this file (let's call it `run_ai.sh`), you submit it to the q
 sbatch run_ai.sh
 ```
 
+
+## Exercise: run your first AI job on LUMI
+
+First, let's create the batch script. Navigate to your project's `/scratch` directory and create a new file named `my_first_slurm_script.sh` (you can use `nano` like we did in Chapter 3). Copy and paste the following code, making sure to replace `project_462xxxxxx` with your actual project ID.
+
+```bash title="my_first_slurm_script.sh"
+#!/bin/bash
+#SBATCH --project=project_462xxxxxx      # Identifies your organization's project
+#SBATCH --partition=dev-g                # Choosing the Slurm partition and the hardware partition (-g for GPU)
+#SBATCH --nodes=1                        # Requesting 1 physical server node
+#SBATCH --ntasks-per-node=1              # Run one instance ('task') of the script at a time 
+#SBATCH --cpus-per-task=14               # The number of CPU cores, in this case per task
+#SBATCH --gpus-per-node=2                # Requesting 2 AMD GCDs (1 full GPU) on that node
+#SBATCH --mem-per-gpu=60G                # 60GB of RAM per GPU
+#SBATCH --time=02:00:00                  # Asking for 2 hours of compute time
+
+
+# 1. Remove any previously loaded modules and load the necessary ones
+module purge
+module use /appl/local/laifs/modules
+module load lumi-aif-singularity-bindings # bindings give LUMI containers access to the file system of the working directory
+
+
+# 2. Set necessary environment variables
+MIOPEN_DIR=$(mktemp -d)my_first_slurm_script.sh
+export MIOPEN_CUSTOM_CACHE_DIR=$MIOPEN_DIR/cache
+export MIOPEN_USER_DB=$MIOPEN_DIR/config
+
+# We use the PyTorch container provided by the LUMI AI Factory Services, which contains vLLM - an engine library for running LLMs.
+export SIF=/appl/local/laifs/containers/lumi-multitorch-u24r70f21m50t210-20260415_130625/lumi-multitorch-full-u24r70f21m50t210-20260415_130625.sif
+
+# Redirect all vLLM cache files from $HOME to scratch.
+export VLLM_CACHE_ROOT=/scratch/$SLURM_JOB_ACCOUNT/vllm-cache
+
+# Where the models are downloaded (the 'weights'). $SLURM_JOB_ACCOUNT automatically finds your username on LUMI. 
+export HF_HOME=/scratch/$SLURM_JOB_ACCOUNT/hf-cache/
+
+# Choose the LLM to run (from https://huggingface.co/ )
+export MODEL_NAME="Qwen/Qwen3.6-35B-A3B"
+
+
+# 3. Run the python script inside the container
+srun singularity run $SIF python3 generate_text.py
+```
+
+Like earlier, the Slurm script books resources, sets the environment variables necessary for the AI code, and starts a script called `generate_text.py`. For that to work, the Python script needs to exist in the exact same directory. **Create a new file** named `generate_text.py` and paste the following code into it:
+
+```python title="generate_text.py"
+import os
+from vllm import LLM, SamplingParams
+
+# Read the variable we exported in the Slurm script
+model_name = os.environ.get("MODEL_NAME")
+
+print(f"Loading {model_name}...")
+# Initialize the model (vLLM will automatically distribute it across our 2 requested GCDs)
+llm = LLM(model=model_name, tensor_parallel_size=2)
+
+# Set up our prompt
+prompts = ["The LUMI supercomputer is"]
+sampling_params = SamplingParams(temperature=0.7, max_tokens=100)
+
+print("Generating text...")
+outputs = llm.generate(prompts, sampling_params)
+
+# Save the generated text to the project's scratch directory
+with open("./my_first_ai_output.txt", "w") as f:
+    f.write(outputs[0].outputs[0].text)
+```
+
+Finally, submit the script using `sbatch`:
+
+```bash
+sbatch my_first_slurm_script.sh
+``` 
 The terminal will respond with something like: `Submitted batch job 1234567`. 
 
 Congratulations, your job is officially in the Slurm queue!
+
+> [!note]
+> If after submitting a Slurm script you're seeing some error message, take a look at our [page of common batch job errors](https://docs.csc.fi/support/faq/why-does-my-batch-job-fail/)
+
+
+## Step-by-step: submit → monitor → check output — sbatch, squeue, sacct, and where to find the output file.
 
 
 ## Interactive Jobs: Running Code and AI Models in Real-Time
@@ -94,6 +176,9 @@ Once Slurm grants you the requested resources, your command prompt will change f
 > [!warning]
 > When you are finished testing, always type exit to release the node so other users can use it!
 
+> [!warning]
+> Note to self: need some interactive job exercise here. 
+
 [👉 Learn more about Interactive Usage on LUMI](https://docs.lumi-supercomputer.eu/runjobs/scheduled-jobs/interactive/)
 
 
@@ -102,7 +187,9 @@ Compute power on LUMI isn't billed in euros — it's billed in **Billing Units (
 
 BUs come in two currencies: **GPU-hours** (for LUMI-G) and **CPU-hours** (for LUMI-C). Since GPUs are the most valuable resource on LUMI, GPU-hours are significantly more expensive.
 
-- **What you're billed for.** You are billed for the resources that have been allocated to you, not the resources you actually use. If your script reserves 4 GCDs but your code only utilizes 1, you still pay for all 4 for the duration of your job. However, if you request 2 hours of walltime but your job finishes in 1 hour, the allocated resources are released and you are only **billed for the 1 hour**.
+[👉 How to check your project's remaining Billing Units](https://docs.lumi-supercomputer.eu/runjobs/lumi_env/dailymanagement/)
+
+- **What you're billed for.** You are billed for the resources that have been allocated to you, not the part of the resources you've actually used (such as 20% GPU utilisation). If your script reserves 4 GCDs but your code only utilizes 1, you still pay for all 4 for the duration of your job. However, if you request 2 hours of walltime but your job finishes in 1 hour, the allocated resources are released and you are only **billed for the 1 hour**.
 
 > [!warning] Efficient resource usage is your responsibility. 
 > Always match your resource requests to what your workload actually needs. Running a tiny model on many GPUs wastes your project's billing allocation. You're billed for allocated resources regardless of how efficiently you have been utilising them.
@@ -121,8 +208,10 @@ In `small-g` and `dev-g` (per-GCD allocation, not full node): each GCD is billed
 
 
 - **How resources are spent:** BUs are calculated based on the hardware you request and how long you occupy it. You're billed for the entirety of the billing units while they are allocated to your job. However, if your Slurm script requested 2h, but the job finished in 1h, the allocated resources are released.
+
     >[!warning] Responsibility for efficient hardware utilisation is on you.
     > If you requested too much resources and are underutilising the hardware (e.g., running a tiny model on multiple GPUs), you are billed for the **allocated** resources regardless of how efficiently you're utilising them. 
+    
 - **The GPU Factor:** billing units are separate for GPU and CPU partitions and are called GPU hours and CPU hours respectively. GPUs are highly valuable and GPU hours are significantly more expensive. To calculate how many GPU hours your script used:
 
     ```
@@ -144,33 +233,6 @@ To find out more about GPU, CPU and storage billing:
 
 
 
-
-
-
-
-**Note to self: chunks of text in double quotes are taken from the CSC ML guide**
-
-## "Create your first batch job script"
-
-"Puhti is a supercomputer cluster, which means that it's a collection of hundreds of computers. Instead of running programs directly, they are put in a queue and a scheduling system (called "Slurm") decides when and where the program will run.
-To run a program in Slurm we need to define a batch job script. This is just a text file with a set of Slurm options defining the resources we need for our program and the actual commands needed to run it. You can read more about defining batch job scripts in our [separate documentation page](https://docs.lumi-supercomputer.eu/runjobs/scheduled-jobs/slurm-quickstart/).
-
-**an example batch job script should be here**
-
-- **Explanation of what the Slurm script does should be here, both Slurm options and what the script itself does**. Something like "This will run a job in the gputest partition, with 10 CPU cores, 32GB memory and one NVIDIA V100 GPU. The job's maximum run time is 15 minutes. In fact, 15 minutes is the maximum run time that you can request in the gputest partition as it is meant for short testing runs only. Finally, the nvme:10 text in the gres options requests 10GB of the fast local drive (called "NVMe")." 
-
-## "Run your first test job"
-* Instructions for the user to go to their project's /scratch folder. Create a directory there, open nano and save the example script in that directory. Edit the project ID and run the script with `sbatch`
-
-"If submission was successful it should report something like:
-Submitted batch job 12345678"
-
-{: .note }
-> If after submitting a Slurm script (`sbatch xxx.sh`) you're seeing some error message, take a look at our [page of common batch job errors](https://docs.csc.fi/support/faq/why-does-my-batch-job-fail/)
-
-* Check the output of the job / use the LLM or sth
-
-## Step-by-step: submit → monitor → check output — sbatch, squeue, sacct, and where to find the output file.
 
 ## Overlapping 
 'jumping' into the shell of the Compute Node of your batch job
