@@ -3,12 +3,6 @@ title: "Chapter 7: Ordering Compute Power (The Slurm Workload Manager)"
 nav_order: 7
 ---
 
----
-layout: default
-title: "Chapter 7: Ordering Compute Power (The Slurm Workload Manager)"
-nav_order: 7
----
-
 # Chapter 7: Ordering Compute Power (The Slurm Workload Manager)
 Now you have all the pieces of the puzzle: your data is uploaded (Chapter 4), your software container is ready and you know how to use it (Chapter 5), and your AI code has been cloned from GitHub (Chapter 6). 
 

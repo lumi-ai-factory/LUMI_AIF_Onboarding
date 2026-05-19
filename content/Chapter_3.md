@@ -7,7 +7,7 @@ nav_order: 3
 
 In the previous chapter, you've logged in to LUMI. If you were successful, you saw LUMI's login wolf, a "Did you know?" fact, and a command line that looked similar to this: 
 
-```bash
+```
 <username>@uan01:~>       
 ```
 
