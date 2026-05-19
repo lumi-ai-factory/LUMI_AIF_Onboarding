@@ -143,40 +143,46 @@ with open("./my_first_ai_output.txt", "w") as f:
     f.write(outputs[0].outputs[0].text)
 ```
 
-Finally, submit the script using `sbatch`:
+### Step 1: Submit the job
+Finally, submit the script to the queue using `sbatch`:
 
 ```bash
 sbatch my_first_slurm_script.sh
 ``` 
-The terminal will respond with something like: `Submitted batch job 1234567`. 
-
-Congratulations, your job is officially in the Slurm queue!
+The terminal will respond with something like: `Submitted batch job 1234567`. Congratulations, your job is officially in the Slurm queue!
 
 > [!note]
-> If after submitting a Slurm script you're seeing some error message, take a look at our [page of common batch job errors](https://docs.csc.fi/support/faq/why-does-my-batch-job-fail/)
+> If you see an error message after submitting, check the [page of common batch job errors](https://docs.csc.fi/support/faq/why-does-my-batch-job-fail/).
 
 
-## Monitoring Your Job and Checking Outputs
-
-Once your job is submitted, it enters the queue. You can check its status using the `squeue` command:
+### Step 2: Monitor the queue
+You can check the status of your job using the `squeue` command:
 
 ```bash
 squeue -u $USER
 ```
-If your job is running, you will see `R` under the state column. If it's waiting for resources, you will see `PD` (Pending).
+If your job is running, you will see `R` under the `ST` (State) column. If it is waiting for resources, you will see `PD` (Pending).
 
-**Where did the output go?**
-Unlike running a script on your laptop where text prints directly to your screen, Slurm captures everything your script "prints" and saves it to a file in the same directory. It will be named something like `slurm-1234567.out` (where the number is your Job ID).
 
-To check the live progress of your job (like watching the model weights load in real-time), you can "follow" the log file:
+### Step 3: Check the live output
+Unlike your laptop where text prints directly to your screen, Slurm captures everything your Python script "prints" and saves it to a log file in the same directory. It will be named `slurm-<your_job_id>.out` (e.g., `slurm-1234567.out`).
+
+To watch the model weights load in real-time, you can "follow" the log file:
 ```bash
 tail -f slurm-1234567.out
 ```
 *(Press `Ctrl+C` to stop watching the file. This doesn't stop the job!)*
 
-You can also read the entire file by opening it:
+
+### Step 4: Review the final results
+Once the job finishes (it will disappear from `squeue`), you can read the complete log file:
 ```bash
 less slurm-1234567.out
+```
+
+More importantly, your Python script created a brand new file with the AI's answer! Let's read it:
+```bash
+less my_first_ai_output.txt
 ```
 
 
