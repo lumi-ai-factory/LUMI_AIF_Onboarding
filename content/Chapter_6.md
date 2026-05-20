@@ -46,9 +46,6 @@ Git is a deep and powerful tool used by professional developers. While clone and
 
 [👉 Git and GitHub](https://www.atlassian.com/git/tutorials/setting-up-a-repository)
 
-> [!warning] Note to self:
-> Find a better / more suitable guide
-
 ## Checklist
 - You understand what GitHub is and why we use it on LUMI.
 - You know how to download a project from GitHub using `git clone`.

@@ -38,7 +38,7 @@ If you are more of a visual learner or if this is your first time learning about
 
 
 ## Practice
-The best way to learn after having studied some theory is to **practice**. Log in to LUMI (see Chapter 2) and let's apply what you've learned in the guides in our Command Line terminal on LUMI. You can watch and repeat after this video (???) or follow these step-by-step instructions:
+The best way to learn after having studied some theory is to **practice**. Log in to LUMI (see Chapter 2) and let's apply what you've learned in the guides in our Command Line terminal on LUMI. Follow these step-by-step instructions:
 
 1. **Where am I?**
     When you log into LUMI using `ssh` as we did in Chapter 2, you end up in your user's `$HOME` folder (this is the current 'working directory'). Check it by running:

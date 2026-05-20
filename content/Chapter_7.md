@@ -27,7 +27,7 @@ To talk to Slurm, we write a simple text file (ending in `.sh`). This file alway
 
 Here is what a simple AI script may look like:
 
-```bash
+```
 #!/bin/bash
 #SBATCH --project=project_462xxxxxx      # Identifies your organization's project
 #SBATCH --partition=small-g              # Choosing the Slurm partition and the hardware partition (-g for GPU)
@@ -101,7 +101,7 @@ export SIF=/appl/local/laifs/containers/lumi-multitorch-u24r70f21m50t210-2026041
 # Redirect all vLLM cache files from $HOME to scratch.
 export VLLM_CACHE_ROOT=/scratch/$SLURM_JOB_ACCOUNT/vllm-cache
 
-# Where the models are downloaded (the 'weights'). $SLURM_JOB_ACCOUNT automatically finds your username on LUMI. 
+# Where the models are downloaded (the 'weights'). $SLURM_JOB_ACCOUNT automatically finds your project ID on LUMI. 
 export HF_HOME=/scratch/$SLURM_JOB_ACCOUNT/hf-cache/
 
 # Choose the LLM to run (from https://huggingface.co/ )

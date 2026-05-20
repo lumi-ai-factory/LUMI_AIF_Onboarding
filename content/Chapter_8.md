@@ -32,7 +32,7 @@ The AI landscape and the LUMI ecosystem evolve rapidly. Keep yourself in the loo
 - **Attend LUMI User Coffee:** Join the regular informal virtual meetings to discuss issues, share experiences, and hear announcements.
 - **Read the Blogs:** Stay inspired by reading the [LUMI Supercomputer Blog](https://lumi-supercomputer.eu/category/blog-posts/) and the [LUMI AI Factory Blog](https://lumi-ai-factory.eu/articles/blog-why-supercomputing-and-lumi/).
 - **Trainings:** Check the [Trainings Calendar](https://lumi-ai-factory.eu/trainings/) for upcoming workshops, courses and webinars.
-- **Services:** Explore the LUMI AI Factory [Service Catalogue](https://lumi-ai-factory.eu/service-catalogue/) to see what other expert support and resources are available to your enterprise.using
+- **Services:** Explore the LUMI AI Factory [Service Catalogue](https://lumi-ai-factory.eu/service-catalogue/) to see what other expert support and resources are available.
 
 
 ## 🆘 Getting Help
