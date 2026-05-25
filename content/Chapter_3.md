@@ -8,7 +8,7 @@ nav_order: 3
 In the previous chapter, you've logged in to LUMI. If you were successful, you saw LUMI's login wolf, a "Did you know?" fact, and a command line that looked similar to this: 
 
 ```
-<username>@uan01:~>       
+<username>@uan01:~ >       
 ```
 
 **Welcome to the Shell.** This is the "Command Line Interface" (CLI). It might feel like you've traveled back in time to the 1980s, but in the world of Supercomputing and AI, this is the most powerful way to work.

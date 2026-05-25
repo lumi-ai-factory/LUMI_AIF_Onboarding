@@ -72,7 +72,7 @@ sbatch run_ai.sh
 
 First, let's create the batch script. Navigate to your project's `/scratch` directory and create a new file named `my_first_slurm_script.sh` (you can use `nano` like we did in Chapter 3). Copy and paste the following code, making sure to replace `project_462xxxxxx` with your actual project ID.
 
-```bash title="my_first_slurm_script.sh"
+```command title="my_first_slurm_script.sh"
 #!/bin/bash
 #SBATCH --project=project_462xxxxxx      # Identifies your organization's project
 #SBATCH --partition=dev-g                # Choosing the Slurm partition and the hardware partition (-g for GPU)
