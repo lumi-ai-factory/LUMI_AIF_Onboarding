@@ -68,9 +68,10 @@ When you connect for the first time, you will be asked to check the host key fin
 
 **Where is my username and where do I upload my key?**
 
-Because LUMI is a pan-European consortium, your account and public key are managed by the specific portal you used to gain access:
-- **Finnish users:** You upload your SSH key and manage your account in your [MyCSC user profile](https://my.csc.fi/). You can also find your 8-character username (e.g., `smithmar`) by logging into [MyLUMI](https://www.lumi.csc.fi).
-- **EuroHPC users (and most other Consortium members):** You register your public key in your [MyAccessID user profile](https://mms.myaccessid.org/profile/). You can find more details in the [EuroHPC AAI documentation](https://docs.my-eurohpc.eu/aai/aai/).
+Because LUMI is a pan-European consortium, your account and public key are managed by the specific portal you used to gain access. This depends on where your project resources were granted from, rather than your nationality:
+- **Projects granted via CSC (Finland):** You upload your SSH key and manage your account in your [MyCSC user profile](https://my.csc.fi/). You can also find your 8-character username (e.g., `smithmar`) by logging into [MyLUMI](https://www.lumi.csc.fi).
+- **Projects granted via EuroHPC:** You manage your access through the EuroHPC Federation Platform (EFP). You can find detailed instructions for uploading your SSH key in the [EuroHPC AAI documentation](https://docs.my-eurohpc.eu/aai/aai/).
+- **Projects granted via other Consortium countries:** Most other consortium countries manage their access and SSH keys through the [Puhuri portal](https://puhuri.io/).
 - **Unsure where to go?** Please refer to the official [Access to LUMI guide](https://docs.lumi-supercomputer.eu/firststeps/accessLUMI/) to find the correct portal for your specific country or organisation.
 
 **The Silent Passphrase**
