@@ -37,7 +37,7 @@ If you’ve used commercial cloud services that provide computational resources 
 
 - **Support for Innovation:** Scaling AI can be incredibly resource-intensive for small and medium-sized enterprises (SMEs) and startups. We offer learning materials, free compute resources (subject to application approval and eligibility), and expert guidance to eligible companies to ensure your ideas aren't limited by budget or hardware% constraints.
 
-- **Data Services:** We are also actively developing comprehensive data services—such as our upcoming [Dataset as a Service](https://lumi-ai-factory.eu/dataset-as-a-service/)—to further support your workflows and help you manage your data alongside compute resources.
+- **Data Services:** We are also actively developing comprehensive data services—such as [Dataset as a Service](https://lumi-ai-factory.eu/dataset-as-a-service/)—to further support your workflows and help you manage your data alongside compute resources.
 
 - **The Trade-off:** With great power comes... a bit of a learning curve. LUMI requires more technical "hands-on" work — specifically using the Command Line%. This guide is here to make sure you have the skills to handle that power with confidence.
 
