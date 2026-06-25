@@ -128,6 +128,15 @@ On a shared supercomputer, privacy behaves differently than on a personal comput
 
 [👉 Read the official LUMI Jobs and Data Privacy Guide](https://docs.lumi-supercomputer.eu/runjobs/lumi_env/privacy-on-system/) to understand visibility rules and best practices for securing sensitive information.
 
+## 🛡️ GDPR and Sensitive Data Categories
+Beyond internal system visibility, you must also consider legal compliance before uploading datasets. When it comes to personal and sensitive information, it is important to distinguish between two types of data processing:
+
+1. **LUMI User Data:** LUMI processes personal data related to its users (such as names, organisational affiliations, and contact information) for account management and service operation. For this, LUMI acts as the data controller%. You can read more in the [Privacy Notice for processing of user data on the LUMI Service](https://lumi-supercomputer.eu/privacy-notice-for-processing-of-user-data-on-the-lumi-service/).
+2. **Personal Data in User Datasets:** You might use LUMI to process datasets that contain personal data. In this context, your organisation acts as the GDPR% data controller%, and LUMI acts as the data processor%. In accordance with the [LUMI General Terms of Use](https://lumi-supercomputer.eu/wp-content/uploads/2026/03/LUMI-General-Terms-of-Use_2026.pdf), it is your responsibility to assess and ensure that the LUMI environment provides an adequate level of security for the specific data you are processing. Depending on your dataset, the requirements differ:
+   - **Anonymised Data:** Fully anonymised datasets are generally well suited for processing in LUMI as they fall outside the scope of GDPR%.
+   - **Identifiable Data:** Identifiable personal data may be processed provided that appropriate security controls and contractual arrangements (such as a Data Processing Agreement (DPA)%) are strictly in place.
+   - **Highly Sensitive Data (Special Categories):** You must exercise extreme caution before processing special categories of personal data, such as health or biometric records. While the Terms of Use may allow this under specific conditions, LUMI's shared architecture means that guaranteeing the secure deletion of data after processing is not straightforward. Therefore, if your project requires handling such sensitive information, you must contact the LUMI team in advance to assess your use case and establish the necessary safeguards before uploading any data.
+
 
 ## 🚚 Moving Your Data to LUMI
 
