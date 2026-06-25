@@ -58,7 +58,7 @@ Before we dive in, let’s talk about your data. While LUMI is a highly secure e
 
 If your project involves processing **personal, identifiable, or highly sensitive data** (like health records), strict GDPR rules and specific contractual agreements apply. You must assess your use case and establish the necessary safeguards *before* uploading any sensitive datasets.
 
-We will cover the specific rules and classifications for sensitive data in detail in **[Chapter 4](Chapter_4.md#️-gdpr-and-sensitive-data-categories)**.
+We will cover the specific rules and classifications for sensitive data in detail in [Chapter 4](Chapter_4#️-gdpr-and-sensitive-data-categories).
 
 
 ## 🚀 How to Get Started
