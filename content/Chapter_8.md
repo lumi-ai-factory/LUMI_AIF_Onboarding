@@ -59,6 +59,15 @@ Even the most experienced developers get stuck. When you do, don't struggle in s
 ```quiz
 title: Final Quiz: LUMI Survival Guide
 
+Q: When preparing to process datasets containing personal data on LUMI, which of the following is the correct approach?
+- [ ] You can freely upload any dataset because LUMI is a highly secure supercomputer.
+- [ ] Personal data is strictly forbidden; only fully anonymised data can ever be uploaded.
+- [x] You can process identifiable data if the right contractual agreements (like a Data Processing Agreement) are in place, but highly sensitive data (like health records) requires contacting the LUMI team in advance.
+- [ ] You only need to encrypt the dataset before uploading it, and then all GDPR restrictions are waived.
+> While anonymised data is generally safe, processing identifiable data requires a Data Processing Agreement, and highly sensitive data requires a prior assessment with the LUMI team.
+
+---
+
 Q: When typing your SSH passphrase in the terminal during login, what should you expect to see?
 - [ ] Asterisks (***) hiding your password.
 - [ ] A progress bar.

@@ -18,6 +18,10 @@ A quick reference for all technical terms used in this guide, listed by chapter.
 | **HPC (High-Performance Computing)** | The use of supercomputers and parallel processing to solve large computational problems. |
 | **Terminal** | The application on your computer that provides access to the Command Line (Terminal on Mac/Linux, PowerShell on Windows). |
 | **LLM** |  Large Language Model. An AI model with billions of parameters trained on massive text datasets to understand and generate language. |
+| **GDPR** | General Data Protection Regulation. A European Union regulation concerning data protection and privacy in the EU and the EEA. |
+| **Data Controller** | Under GDPR, the entity that determines the purposes and means of processing personal data. |
+| **Data Processor** | Under GDPR, the entity that processes personal data on behalf of the data controller. |
+| **Data Processing Agreement (DPA)** | A legally binding contract between a Data Controller and a Data Processor regulating the secure handling of personal data. |
 
 ---
 

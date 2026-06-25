@@ -60,10 +60,10 @@ Before we dive in, let’s talk about your data. While LUMI is a secure environm
 
 That said, file-level permissions are only one part of the picture. When it comes to personal and sensitive information, it is important to distinguish between two types of data processing:
 
-1. **LUMI User Data:** LUMI processes personal data related to its users (such as names, organisational affiliations, and contact information) for account management and service operation. For this, LUMI acts as the data controller. You can read more in the [Privacy Notice for processing of user data on the LUMI Service](https://lumi-supercomputer.eu/privacy-notice-for-processing-of-user-data-on-the-lumi-service/).
-2. **Personal Data in User Datasets:** You might use LUMI to process datasets that contain personal data. In this context, your organisation acts as the GDPR data controller, and LUMI acts as the data processor. In accordance with the [LUMI General Terms of Use](https://lumi-supercomputer.eu/wp-content/uploads/2026/03/LUMI-General-Terms-of-Use_2026.pdf), it is your responsibility to assess and ensure that the LUMI environment provides an adequate level of security for the specific data you are processing. Depending on your dataset, the requirements differ:
-   - **Anonymised Data:** Fully anonymised datasets are generally well suited for processing in LUMI as they fall outside the scope of GDPR.
-   - **Identifiable Data:** Identifiable personal data may be processed provided that appropriate security controls and contractual arrangements (such as a Data Processing Agreement) are strictly in place.
+1. **LUMI User Data:** LUMI processes personal data related to its users (such as names, organisational affiliations, and contact information) for account management and service operation. For this, LUMI acts as the data controller%. You can read more in the [Privacy Notice for processing of user data on the LUMI Service](https://lumi-supercomputer.eu/privacy-notice-for-processing-of-user-data-on-the-lumi-service/).
+2. **Personal Data in User Datasets:** You might use LUMI to process datasets that contain personal data. In this context, your organisation acts as the GDPR% data controller%, and LUMI acts as the data processor%. In accordance with the [LUMI General Terms of Use](https://lumi-supercomputer.eu/wp-content/uploads/2026/03/LUMI-General-Terms-of-Use_2026.pdf), it is your responsibility to assess and ensure that the LUMI environment provides an adequate level of security for the specific data you are processing. Depending on your dataset, the requirements differ:
+   - **Anonymised Data:** Fully anonymised datasets are generally well suited for processing in LUMI as they fall outside the scope of GDPR%.
+   - **Identifiable Data:** Identifiable personal data may be processed provided that appropriate security controls and contractual arrangements (such as a Data Processing Agreement (DPA)%) are strictly in place.
    - **Highly Sensitive Data (Special Categories):** You must exercise extreme caution before processing special categories of personal data, such as health or biometric records. While the Terms of Use may allow this under specific conditions, LUMI's shared architecture means that guaranteeing the secure deletion of data after processing is not straightforward. Therefore, if your project requires handling such sensitive information, you must contact the LUMI team in advance to assess your use case and establish the necessary safeguards before uploading any data.
 
 
@@ -135,10 +135,10 @@ Q: Why might you choose LUMI over a standard commercial cloud provider?
 
 ---
 
-Q: What kind of data is appropriate to upload to the LUMI supercomputer?
-- [ ] Classified government data.
-- [ ] Raw medical records with patient names and addresses.
-- [ ] Any data containing Personally Identifiable Information (PII).
-- [x] Anonymised or pseudonymised data.
-> LUMI is a shared supercomputer and lacks specific certifications for raw PII or classified data. Data should be properly stripped of identifying markers before uploading.
+Q: Under what conditions can you process datasets containing personal data on LUMI?
+- [ ] You can upload any personal data since LUMI is a highly secure environment.
+- [ ] You can only upload fully anonymised data; identifiable data is strictly prohibited.
+- [ ] You can never upload special categories of personal data, such as health records.
+- [x] You can process identifiable data if appropriate security controls and a Data Processing Agreement are in place.
+> While fully anonymised data is generally well-suited, you can process identifiable data with the right contractual agreements. Highly sensitive data requires contacting the LUMI team in advance to assess the use case.
 ```
