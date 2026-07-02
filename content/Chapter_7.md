@@ -234,13 +234,13 @@ BUs come in two currencies: **GPU-hours** (for LUMI-G) and **CPU-hours** (for LU
 - **GPU Billing Rates.**
 In standard-g (full-node allocation): each LUMI-G node contains 4 MI250X GPUs (8 GCDs), so 1 node-hour equals 4 GPU-hours. GPU-hours are counted based on physical GPUs, 1 GCD = 0.5 GPU. For example, if you allocate 4 nodes and your Job runs for 24 hours:
 
-```text
-4 nodes × 4 GPU-hours/node × 24 hours = 384 GPU-hours
-```
+$$
+4 \text{ nodes} \times 4 \text{ GPU-hours/node} \times 24 \text{ hours} = 384 \text{ GPU-hours}
+$$
 
 In `small-g` and `dev-g` (per-GCD allocation, not full node): each GCD is billed at 0.5 GPU-hours per hour. 
 
-> [!info] Slice logic
+> [!info] LUMI-G Slice logic
 > You're effectively billed per "proportion" of the node you're using. A LUMI-G node is split into 8 equal slices. Each 1/8th slice contains:
 > - **1 GCD** (half a physical GPU)
 > - **7 CPU cores**
@@ -249,6 +249,9 @@ In `small-g` and `dev-g` (per-GCD allocation, not full node): each GCD is billed
 > You should always request resources in multiples of these full slices (e.g., 2 GCDs, 14 CPU cores, 120 GB RAM). If you request more CPU cores or memory than what fits in your GPU slices, you will be billed for the extra slices!
 > 
 > **Example:** If you request 1 GCD but ask for **180 GB of RAM** for 1 hour, your RAM request spans across 3 full slices (180 / 60 = 3). You will be billed for **3 slices (1.5 GPU-hours)**, even though you only used 1 GCD!
+
+- **CPU Billing Rates.**
+For **LUMI-C** CPU nodes, the slice logic is different from GPU nodes. A CPU slice is **1 CPU core and 2 GB of RAM**. You are billed based on whichever is higher: the number of cores requested or the amount of memory requested divided by 2 GB.
 
 
 - **Walltime is a hard limit:** If you ask Slurm for 2 hours (`#SBATCH --time=02:00:00`), but your Job isn't complete when time runs out, the Job will be strictly terminated. Always give your Jobs a little bit of "buffer time" to ensure they complete cleanly!
