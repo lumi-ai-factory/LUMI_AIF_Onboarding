@@ -229,6 +229,8 @@ BUs come in two currencies: **GPU-hours** (for LUMI-G) and **CPU-hours** (for LU
 > [!warning] Efficient resource usage is your responsibility
 > Always match your resource requests to what your workload actually needs. Running a tiny model on many GPUs wastes your project's billing allocation. You're billed for allocated resources regardless of how efficiently you have been utilising them.
 
+- **Negative Billing Units.** If your project runs out of Billing Units while a Job is running, the Job will be allowed to finish and your project may go into negative billing units. You will not be charged for this negative balance.
+
 - **GPU Billing Rates.**
 In standard-g (full-node allocation): each LUMI-G node contains 4 MI250X GPUs (8 GCDs), so 1 node-hour equals 4 GPU-hours. GPU-hours are counted based on physical GPUs, 1 GCD = 0.5 GPU. For example, if you allocate 4 nodes and your Job runs for 24 hours:
 
