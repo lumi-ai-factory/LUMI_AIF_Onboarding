@@ -297,7 +297,7 @@ export function MarkdownRenderer({
       if (!href || !href.startsWith("#")) return;
       const url = window.location.origin + window.location.pathname + href;
       if (navigator.clipboard) {
-        navigator.clipboard.writeText(url).catch(() => { });
+        navigator.clipboard.writeText(url).catch(() => {});
         toast.success("Link copied to clipboard");
       }
     };
@@ -359,11 +359,11 @@ export function MarkdownRenderer({
             const p = props as Record<string, unknown>;
             const node = p.node as
               | {
-                children?: Array<{
-                  tagName?: string;
-                  data?: { meta?: string };
-                }>;
-              }
+                  children?: Array<{
+                    tagName?: string;
+                    data?: { meta?: string };
+                  }>;
+                }
               | undefined;
             const dataMeta =
               (p.dataMeta as string | undefined) ??

@@ -249,5 +249,3 @@ export function applyGlossaryMarkers(source: string): string {
   return lines.join("\n");
 }
 
-
-

@@ -107,8 +107,8 @@ export function CodeBlock({
     } else {
       text = ref.current?.innerText ?? "";
     }
-    
-    // Strip out the zero-width spaces we injected for empty line rendering
+
+        // Strip out the zero-width spaces we injected for empty line rendering
     text = text.replace(/\u200B/g, "");
     
     await navigator.clipboard.writeText(text);
