@@ -24,7 +24,7 @@ On LUMI, those folders (called directories in the Command Line) and files are st
 - Efficiency: LUMI is optimised for math and data processing. Displaying a fancy visual desktop for thousands of users would waste massive amounts of power that should be used for your AI models instead.
 
 ## 📚 Command Line Study Materials
-To learn about the Command Line and the commands to use it, we recommend reading [Linux Command Line for beginners](https://ubuntu.com/desktop/docs/en/latest/tutorial/the-linux-command-line-for-beginners/?_gl=1*1xncfxx*_gcl_au*MTE1MTU1NjkxMS4xNzc4MjQwOTc4). 
+To learn about the Command Line and the commands to use it, we recommend reading [Linux Command Line for beginners](https://ubuntu.com/desktop/docs/en/latest/tutorial/the-linux-command-line-for-beginners/). 
 
 If you are more of a visual learner or if this is your first time learning about the Command Line%, watch this [video guide](https://www.youtube.com/watch?v=16d2lHc0Pe8).
 
@@ -96,7 +96,7 @@ The best way to learn after having studied some theory is to **practise**. Log i
 
 6. **Upload a file.** To upload an image from your machine (PC/laptop) to LUMI, one way is to use the web interface:
     - Open [www.lumi.csc.fi](https://www.lumi.csc.fi) in your browser (don't close your Terminal!), log in and go to `Home directory`. This is your `$HOME` user directory. There you should see our `first_dir` folder (do **not** click into it so your upload lands in `$HOME`, not inside `first_dir`).
-    - Click "Upload" and upload your image directly to your `$HOME` directory (make sure you do not upload it inside the `first_dir` folder). 
+    - Click "Upload" and upload your image directly to your `$HOME` directory. 
 
     > [!tip] Using `scp`
     > Another, more 'professional' way of uploading files is to use `scp` command as [described here](https://docs.lumi-supercomputer.eu/firststeps/movingdata/).

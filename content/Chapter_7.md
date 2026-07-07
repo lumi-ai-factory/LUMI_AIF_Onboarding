@@ -96,6 +96,7 @@ export MIOPEN_CUSTOM_CACHE_DIR=$MIOPEN_DIR/cache
 export MIOPEN_USER_DB=$MIOPEN_DIR/config
 
 # We use the PyTorch Container provided by the LUMI AI Factory Services, which contains vLLM - an engine library for running LLMs.
+# For this exercise we point to one exact dated Container, so the exercise works the same for every reader. For your own projects, using 'lumi-multitorch-latest.sif' is a good default.
 export SIF=/appl/local/laifs/containers/lumi-multitorch-u24r70f21m50t210-20260415_130625/lumi-multitorch-full-u24r70f21m50t210-20260415_130625.sif
 
 # Redirect all vLLM cache files from $HOME to scratch.
@@ -328,7 +329,7 @@ Q: You just finished testing your code in an Interactive Job (`srun ... --pty ba
 - [x] Press `Ctrl+D`.
 - [ ] Do nothing, the Job will eventually time out.
 - [x] Type `exit`.
-> Closing your laptop or pressing `Ctrl+C` does NOT stop an interactive session! It will keep running in the background and burning your Billing Units until it hits its maximum walltime. You must use `exit` or `Ctrl+D` to terminate the session cleanly.
+> Pressing `Ctrl+C` does NOT stop an interactive session, and simply closing your laptop or losing your connection may leave it holding (and billing) your resources. Don't rely on that — always type `exit` or press `Ctrl+D` to terminate the session cleanly and release the GPUs.
 
 ---
 

@@ -58,13 +58,7 @@ If you prefer to copy and paste commands from this guide rather than typing them
 
 **Don't Panic: The First-Time Warning**
 
-When you connect for the first time, you will be asked to check the host Key fingerprint% of the system and need to type `yes` in order to accept it. The fingerprints of the LUMI Login Nodes are listed in the table below. Please make sure that the host Key fingerprint matches one of these:
-
-| Key type | Fingerprint |
-| :--- | :--- |
-| ED25519 | `SHA256:qCFZThjRw8nf0CiZ9rU7b6Zirjq8slAIl5r0xWaVoD0` |
-| RSA | `SHA256:ypbqdMWtk9ZdXEROkeEpv+3PCEXWjPLGI79IXGHe9ac` |
-| ECDSA | `SHA256:hY4mnRCYb8bRchTnVcFo7SqoHHHEsUh9Ym38F4sHN1Y` |
+When you connect for the first time, you will be asked to check the host Key fingerprint% of the system and need to type `yes` in order to accept it. Before you do, please make sure that the fingerprint shown in your Terminal matches one of the up-to-date fingerprints of the LUMI Login Nodes listed in the [official login documentation](https://docs.lumi-supercomputer.eu/firststeps/loggingin/).
 
 **Where is my username and where do I upload my Key?**
 

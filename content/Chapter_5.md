@@ -16,7 +16,7 @@ LUMI uses a specialised high-performance storage system called **Lustre%**. Lust
 A typical `pip install` of a library like PyTorch creates tens of thousands of tiny files. If everyone ran it, the filesystem would struggle to keep track of millions of tiny files, slowing down the entire supercomputer for everyone.
 
 ## 📦 The Solution: Containers
-To avoid the "Million File" problem, we use Containers. On LUMI, our Container tool of choice is called 'Apptainer' (previously 'Singularity').
+To avoid the "Million File" problem, we use Containers. On LUMI, our Container tool of choice is called 'Singularity' (nowadays also known under its new name, 'Apptainer').
 
 **What is a Container?** 
 
