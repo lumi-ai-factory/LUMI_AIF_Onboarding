@@ -215,7 +215,7 @@ This will print out the status of the 2 GCDs (GPUs) that Slurm just gave you! Yo
 
 When you are finished testing, always type `exit` or press `Ctrl+D` to close your session and release your allocated resources!
 
-[👉 Learn more about Interactive Usage on LUMI](https://docs.lumi-supercomputer.eu/runjobs/scheduled-jobs/interactive/)
+[👉 Learn more about Interactive Usage on LUMI](https://docs.lumi-supercomputer.eu/runjobs/scheduled-jobs/interactive/) **(Optional)**
 
 
 ## 💰 How Billing Works on LUMI
@@ -259,7 +259,7 @@ For **LUMI-C** CPU nodes, the slice logic is different from GPU nodes. A CPU sli
 
 To find out more about GPU, CPU and storage billing:
 
-[👉 Read the official Breakdown of LUMI Billing Policies](https://docs.lumi-supercomputer.eu/runjobs/lumi_env/billing/)
+[👉 Read the official Breakdown of LUMI Billing Policies](https://docs.lumi-supercomputer.eu/runjobs/lumi_env/billing/) **(Optional)**
 
 ## ✅ Summary Checklist
 - You understand how Slurm schedules Jobs.

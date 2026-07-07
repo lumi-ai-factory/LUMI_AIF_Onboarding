@@ -26,7 +26,7 @@ On LUMI, those folders (called directories in the Command Line) and files are st
 ## 📚 Command Line Study Materials
 To learn about the Command Line and the commands to use it, we recommend reading [Linux Command Line for beginners](https://ubuntu.com/desktop/docs/en/latest/tutorial/the-linux-command-line-for-beginners/). 
 
-If you are more of a visual learner or if this is your first time learning about the Command Line%, watch this [video guide](https://www.youtube.com/watch?v=16d2lHc0Pe8).
+If you are more of a visual learner or if this is your first time learning about the Command Line%, watch this [video guide](https://www.youtube.com/watch?v=16d2lHc0Pe8) **(Optional)**.
 
 > [!warning] There is no "Undo"
 > The Command Line is unforgiving and does not have a "Recycle Bin" or "Revert the previous command" functionality.
@@ -99,7 +99,7 @@ The best way to learn after having studied some theory is to **practise**. Log i
     - Click "Upload" and upload your image directly to your `$HOME` directory. 
 
     > [!tip] Using `scp`
-    > Another, more 'professional' way of uploading files is to use `scp` command as [described here](https://docs.lumi-supercomputer.eu/firststeps/movingdata/).
+    > Another, more 'professional' way of uploading files is to use `scp` command as [described here](https://docs.lumi-supercomputer.eu/firststeps/movingdata/) **(Optional)**.
 
 7. **Go back.** Open your Terminal. Go back to the "Parent Directory%" of the current Working Directory: 
 
@@ -136,7 +136,7 @@ The best way to learn after having studied some theory is to **practise**. Log i
 
 11. **Disconnect**. Great job! You can now disconnect from LUMI by pressing **Ctrl+D**. You will notice the Command Line prompt change back to your local computer's format (such as `username@your_computer` on Mac/Linux, or `C:\Users\Name` on Windows). This confirms you are safely back on **your machine**.
 
-You can learn more about Linux Command Line on the [Linux basics tutorial for CSC](https://docs.csc.fi/support/tutorials/env-guide/) page. 
+You can learn more about Linux Command Line on the [Linux basics tutorial for CSC](https://docs.csc.fi/support/tutorials/env-guide/) page. **(Optional)**
 
 ## 📝 Your Command Line Cheatsheet
 

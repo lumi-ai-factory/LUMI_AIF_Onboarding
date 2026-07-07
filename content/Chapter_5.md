@@ -90,14 +90,14 @@ However, if a guide or script recommends an outdated Container, or if a Containe
 
 Besides `lumi-multitorch-latest.sif` you can see directories. The name of the directory% contains the date when it was created. `20260415` stands for 2026/04/15. Within each directory you have a number of Containers with different contents. `lumi-multitorch-full-...` contains the highest number of libraries and likely includes everything you might want to use. 
 
-[👉 Read about the other types of Containers that contain fewer libraries here](https://docs.lumi-supercomputer.eu/laif/software/ai-environment/).
+[👉 Read about the other types of Containers that contain fewer libraries here](https://docs.lumi-supercomputer.eu/laif/software/ai-environment/). **(Optional)**
 
 ## 🧩 What if I am Missing a Library? (Advanced)
 If you find a Container that is almost perfect but is missing one specific library, you can use a Python Virtual Environment% (`venv`). You create this environment on top of the Container. It stores the extra bits you need in a folder, allowing you to customise your workspace without creating millions of files. If you're sure this is the route you want to take, read this guide:
 
-[👉 Guide on Python Virtual Environment](https://www.w3schools.com/python/python_virtualenv.asp)
+[👉 Guide on Python Virtual Environment](https://www.w3schools.com/python/python_virtualenv.asp) **(Optional — only if you need a `venv`)**
 
-[👉 Or watch this video on creating and using `venv` from within a Container.](https://lumi-supercomputer.github.io/LUMI-training-materials/ai-20240529/extra_07_VirtualEnvironments/)
+[👉 Or watch this video on creating and using `venv` from within a Container.](https://lumi-supercomputer.github.io/LUMI-training-materials/ai-20240529/extra_07_VirtualEnvironments/) **(Optional)**
 
 
 ## ✅ Summary Checklist

@@ -8,7 +8,7 @@ nav_order: 4
 Think of LUMI not as one giant entity, but as a massive *collection* of computers connected by an incredibly fast network.
 
 > [!info] Deep dive: Why supercomputing?
-> You might wonder why we connect thousands of computers together instead of just building one giant one. To learn about how supercomputers use **parallel processing** to solve massive AI challenges (and how they differ from your laptop), check out the article: [Why supercomputing and LUMI?](https://lumi-ai-factory.eu/articles/blog-why-supercomputing-and-lumi/)
+> You might wonder why we connect thousands of computers together instead of just building one giant one. To learn about how supercomputers use **parallel processing** to solve massive AI challenges (and how they differ from your laptop), check out the article: [Why supercomputing and LUMI?](https://lumi-ai-factory.eu/articles/blog-why-supercomputing-and-lumi/) **(Optional)**
 
 
 ## 🏢 The "Two-Room" Rule: Login vs. Compute
@@ -54,8 +54,6 @@ Within each of those hardware Partitions%, the Slurm scheduler further divides r
 | small | 3 days | 220 | 4 nodes | Small or memory intense Jobs |
 | debug | 30 minutes | 2 | 4 nodes | Debugging and testing |
 
-[👉 Full list of Slurm Partitions](https://docs.lumi-supercomputer.eu/runjobs/scheduled-jobs/partitions/)
-
 > [!note] What is a Job?
 > **A Job** is any task you ask the supercomputer to run — a script that trains a model, processes a dataset, or runs a simulation. You write the instructions, submit them, and LUMI executes them for you.
 
@@ -66,7 +64,7 @@ Within each of those hardware Partitions%, the Slurm scheduler further divides r
 | small-g | 3 days | 210 | 4 nodes | Small GPU Jobs |
 | dev-g | 2 hours | 2 | 8 nodes | Debugging |
 
-[👉 Full list of Slurm Partitions](https://docs.lumi-supercomputer.eu/runjobs/scheduled-jobs/partitions/)
+[👉 Full list of Slurm Partitions](https://docs.lumi-supercomputer.eu/runjobs/scheduled-jobs/partitions/) **(Optional)**
 
 ### 🤝 Exclusive vs. Shared Nodes
 When you book resources from the `standard-g` Partition, Slurm allocates **entire physical nodes exclusively to you**. You are the only person running code on that machine, and you are billed for all 8 GPUs on it, even if your code only uses 1.
@@ -96,9 +94,9 @@ Because they operate independently, the software% and the Slurm% scheduler (cove
 
 **Why does this matter?** Because when Slurm% refers to "GPUs", it actually means "GCDs". If you look at a full LUMI-G node, Slurm will say it has **8 GPUs available**, not 4. When you request resources for your Job, remember: **1 Slurm GPU = 1 GCD = half of a physical MI250X.**
 
-[👉 LUMI-G (GPU Partition) hardware description](https://docs.lumi-supercomputer.eu/hardware/lumig/)
+[👉 LUMI-G (GPU Partition) hardware description](https://docs.lumi-supercomputer.eu/hardware/lumig/) **(Optional)**
 
-[👉 LUMI-C (CPU Partition) hardware description](https://docs.lumi-supercomputer.eu/hardware/lumic/)
+[👉 LUMI-C (CPU Partition) hardware description](https://docs.lumi-supercomputer.eu/hardware/lumic/) **(Optional)**
 
 
 ## 📂 Where Does My Data Live? (Storage Tiers)
@@ -118,7 +116,7 @@ On your laptop, everything is usually on one "C: Drive." On LUMI, storage is spl
 > [!note] Flash is fast but expensive
 > Flash is 3x more expensive per TB because it uses faster NVMe drives. Use it only when your Job needs very fast Input and Output (I/O), i.e., the speed of reading from and writing to the drive.
 
-[👉 More info on LUMI Storage](https://docs.lumi-supercomputer.eu/storage/)
+[👉 More info on LUMI Storage](https://docs.lumi-supercomputer.eu/storage/) **(Optional)**
 
 ### 🔒 Jobs and Data Privacy
 On a shared supercomputer, privacy behaves differently than on a personal computer:
@@ -126,7 +124,7 @@ On a shared supercomputer, privacy behaves differently than on a personal comput
 *   **Shared Compute Nodes:** When using shared Partitions (such as `small-g` or `dev-g`), other users running on the same node can see the *names* of the commands and programs you are running (like seeing `python my_script.py` in a task manager). They cannot see the actual contents of your files or the output of your programs.
 *   **Job Details:** Information about your submitted Slurm Jobs (including Job names and submission paths) is visible to all users on the system via monitoring commands.
 
-[👉 Read the official LUMI Jobs and Data Privacy Guide](https://docs.lumi-supercomputer.eu/runjobs/lumi_env/privacy-on-system/) to understand visibility rules and best practices for securing sensitive information.
+[👉 Read the official LUMI Jobs and Data Privacy Guide](https://docs.lumi-supercomputer.eu/runjobs/lumi_env/privacy-on-system/) to understand visibility rules and best practices for securing sensitive information. **(Optional — recommended if you work with confidential code or data)**
 
 ## 🛡️ GDPR and Sensitive Data
 Beyond internal system visibility, you must also consider legal compliance before uploading datasets. When it comes to personal and sensitive information, it is important to distinguish between two types of data processing:
@@ -137,7 +135,7 @@ Beyond internal system visibility, you must also consider legal compliance befor
    - **Identifiable Data:** Identifiable personal data may be processed provided that appropriate security controls and contractual arrangements, including a Data Processing Agreement (DPA)% where applicable, are in place.
    - **Highly Sensitive Data (Special Categories):** You must exercise extreme caution before processing special categories of personal data, such as health or biometric records. While the Terms of Use may allow this under specific conditions, LUMI's shared architecture means that guaranteeing the secure deletion of data after processing is not straightforward. Therefore, if your project requires handling such sensitive information, you are strongly encouraged to contact the LUMI team in advance to assess your use case and establish the necessary safeguards before uploading any data.
 
-[👉 Read the LUMI General Terms of Use](https://lumi-supercomputer.eu/wp-content/uploads/2026/03/LUMI-General-Terms-of-Use_2026.pdf)
+[👉 Read the LUMI General Terms of Use](https://lumi-supercomputer.eu/wp-content/uploads/2026/03/LUMI-General-Terms-of-Use_2026.pdf) **(Optional — read it before processing personal data)**
 
 ## 🚚 Moving Your Data to LUMI
 

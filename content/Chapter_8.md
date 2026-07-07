@@ -26,7 +26,7 @@ Take your time with it, and remember to use the foundational "survival skills" y
 
 ## 📚 Next Steps: Advanced Materials
 
-Now that you've mastered the basics, here are some excellent resources to continue your journey:
+Now that you've mastered the basics, here are some excellent resources to continue your journey — pick whichever match your goals:
 
 - [👉 Working with LLMs](https://docs.csc.fi/support/tutorials/ml-llm/): Tutorials and examples on LLM fine-tuning, quantisation and Retrieval-Augmented Generation (RAG).
 - [👉 Technical Primer on Large Language Models](https://arbruiser.github.io/Technical-primer-on-LLMs/): A deep dive into the theory of LLMs: model architectures (MoE vs. Dense), attention mechanisms (GQA), memory bottlenecks, and scaling strategies like Tensor Parallelism.

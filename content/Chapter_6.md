@@ -44,9 +44,9 @@ git pull
 This command checks GitHub for any new changes and "pulls" them down to your LUMI directory.
 
 ## 📚 Learn More
-Git is a deep and powerful tool used by professional developers. While clone and pull are enough to get you started as a user, you may eventually want to learn how to save your own changes and contribute back. For that, we recommend going through this guide for beginners:
+Git is a deep and powerful tool used by professional developers. While clone and pull are enough to get you started as a user, you may eventually want to learn how to save your own changes and contribute back. For that, we recommend reading GitHub's short official introduction to Git and its basic commands:
 
-[👉 Git and GitHub](https://www.atlassian.com/git/tutorials/setting-up-a-repository)
+[👉 About Git](https://docs.github.com/en/get-started/using-git/about-git) **(Optional)**
 
 ## ✅ Summary Checklist
 - You understand what GitHub is and why it is used on LUMI.
