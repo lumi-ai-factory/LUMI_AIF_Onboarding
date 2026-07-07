@@ -130,3 +130,11 @@ A quick reference for all technical terms used in this guide, listed by chapter.
 | **Environment Variable** | A background setting you define before running a program, which tells the program how it should behave (such as telling it which AI model to load or where to save files). |
 | **vLLM** | A fast software engine used to run LLMs efficiently. It is the recommended way to use large language models on LUMI. |
 
+---
+
+## Chapter 8: Graduation & Next Steps
+
+| Term | Definition |
+|:-----|:-----------|
+| **MCP** | Model Context Protocol. An open standard that lets AI assistants connect to external tools and data sources — for example, letting your chatbot search the LUMI documentation. |
+

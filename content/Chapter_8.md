@@ -33,6 +33,13 @@ Now that you've mastered the basics, here are some excellent resources to contin
 - [👉 HPC Guides Collection](https://github.com/lumi-ai-factory/ai-hpc-guide-collection): A curated Repository of various High-Performance Computing and AI guides.
 
 
+## 🤖 Give Your AI Assistant LUMI Knowledge
+
+Out of the box, AI chatbots often don't know LUMI's specific configurations and policies. To fix this, the LUMI AI Factory hosts a free, public MCP% server that lets AI assistants search the official LUMI documentation directly. If your AI tool supports the Model Context Protocol — like Claude, ChatGPT (Developer mode), VS Code Copilot, or coding agents such as OpenCode — you can connect it using this address: `https://lumi-aif-agents.2.rahtiapp.fi/mcp` (no authentication needed).
+
+For setup details — and for how to run AI coding agents directly on LUMI — see [Infrastructure for AI Agents](https://docs.lumi-supercomputer.eu/laif/software/agent-infrastructure/).
+
+
 ## 🔔 Stay Updated
 
 The AI landscape and the LUMI ecosystem evolve rapidly. Keep yourself in the loop:
