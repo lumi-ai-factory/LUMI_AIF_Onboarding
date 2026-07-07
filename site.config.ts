@@ -10,7 +10,8 @@ export const siteConfig = {
   /** Shown in the browser tab and the header. */
   title: "LUMI AIF Learning Materials",
   /** Default meta description and og:description. */
-  description: "The official onboarding guide and learning materials for the LUMI AI Factory. Learn how to log in, run AI jobs, and harness Europe's most powerful supercomputer.",
+  description:
+    "The official onboarding guide and learning materials for the LUMI AI Factory. Learn how to log in, run AI jobs, and harness Europe's most powerful supercomputer.",
   /**
    * Canonical site URL (no trailing slash). Auto-detected at build time from
    * GITHUB_REPOSITORY in the deploy workflow. Only set this manually when
@@ -22,14 +23,6 @@ export const siteConfig = {
   /** Funding acknowledgement shown at the end of every page. Set to "" to hide. */
   fundingNotice:
     "The LUMI AI Factory Service Center is funded jointly by the EuroHPC Joint Undertaking and the Participating States FI, CZ, DK, EE, NO, PL.",
-  /**
-   * GitHub repository in the form "owner/repo". Auto-detected from
-   * GITHUB_REPOSITORY in the deploy workflow. Used to render the
-   * "Edit this page on GitHub" link in the footer. Set to null to hide.
-   */
-  githubRepo: (import.meta.env.VITE_GITHUB_REPO ?? null) as string | null,
-  /** Branch the edit links should point to. Auto-detected from GITHUB_REF_NAME. */
-  githubBranch: import.meta.env.VITE_GITHUB_BRANCH ?? "main",
 };
 
 export type SiteConfig = typeof siteConfig;
