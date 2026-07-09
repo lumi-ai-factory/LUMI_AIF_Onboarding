@@ -92,6 +92,9 @@ What you will need to get started:
 - A Terminal%: Don’t worry, your computer already has one (Terminal on Mac/Linux, PowerShell or CMD on Windows). We’ll show you how to use it.
 - A LUMI Project with compute resources: You'll get this after your application for resources is approved.
 
+## ✍️ Transparency Note on AI Assistance
+This material was prepared with the support of AI tools (Google Gemini and Anthropic Claude), which were used exclusively to refine phrasing and ensure clarity. All core concepts, instructional content, and overarching structure were entirely conceived, drafted, and rigorously reviewed by the authors and the LUMI AI Factory staff.
+
 ## ✅ Summary Checklist
 - You understand what LUMI AI Factory is and why it is used.
 - You know how to apply for resources.

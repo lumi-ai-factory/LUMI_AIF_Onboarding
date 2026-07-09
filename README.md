@@ -22,3 +22,6 @@ The curriculum is divided into practical, hands-on chapters designed to get user
 
 ## 🌐 Viewing the Guide
 The live, formatted version of this onboarding guide is hosted via GitHub Pages and can be accessed directly from the repository's main URL.
+
+## ✍️ Transparency Note on AI Assistance
+This material was prepared with the support of AI tools (Google Gemini and Anthropic Claude), which were used exclusively to refine phrasing and ensure clarity. All core concepts, instructional content, and overarching structure were entirely conceived, drafted, and rigorously reviewed by the authors and the LUMI AI Factory staff.
