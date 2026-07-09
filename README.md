@@ -25,3 +25,6 @@ The live, formatted version of this onboarding guide is hosted via GitHub Pages 
 
 ## ✍️ Transparency Note on AI Assistance
 This material was prepared with the support of AI tools (Google Gemini and Anthropic Claude), which were used exclusively to refine phrasing and ensure clarity. All core concepts, instructional content, and overarching structure were entirely conceived, drafted, and rigorously reviewed by the authors and the LUMI AI Factory staff.
+
+## 📄 License
+Content is licensed under the CC-BY 4.0 license. Code and examples licensed under MIT License.
