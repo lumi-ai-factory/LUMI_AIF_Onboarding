@@ -26,6 +26,7 @@ A quick reference for all technical terms used in this guide, listed by chapter.
 
 | Term | Definition |
 |:-----|:-----------|
+| **OS** | Operating System. The core software that manages a computer's hardware and runs your programs, such as Windows, macOS, or Linux. |
 | **SSH** | Secure Shell. A protocol for securely connecting to a remote computer over the internet. |
 | **phishing** | A type of cyberattack where attackers deceive people into revealing sensitive information, such as passwords, by pretending to be a trustworthy entity. |
 | **cryptographic** | A secure way of protecting information using mathematical algorithms so that only the right people can access it. |

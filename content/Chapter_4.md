@@ -82,7 +82,7 @@ When you book a full GPU node on LUMI-G, here is exactly what you get inside tha
 *   **4 × AMD MI250X GPUs:** The incredibly powerful accelerators where your AI models are actually trained.
 *   **Zero Local Storage:** There are no hard drives inside the Compute Nodes - all your data is accessed directly via LUMI's massive, high-speed network storage.
 
-![LUMI-G Hardware](./assets/LUMI_G_Hardware.svg)
+![LUMI-G Hardware](./assets/LUMI_G_Hardware.jpg)
 
 ### The "GPU vs. GCD" confusion (important!)
 This is one of the most important concepts to understand about LUMI's hardware%. 
