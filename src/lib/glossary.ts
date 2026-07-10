@@ -191,47 +191,62 @@ const CODE_SPAN = /(`+)([\s\S]+?)\1(%?)/g;
 const FORMATTED_MARKER = /(\*\*|__|\*|_)([\s\S]+?)\1(%?)/g;
 
 /**
- * Handle `%` markers attached to an inline code span. The marker may sit
- * outside the closing backticks (`` `pip`% ``), just inside them
- * (`` `pip%` ``), or after a term in the middle of the code
- * (`` `pip% install` ``). In every case the whole code span becomes the
- * glossary trigger, so the rendered chip stays in one piece. Raw glossary
- * HTML must never end up between the backticks — markdown would render it
- * as literal text.
+ * Handle a `%` marker sitting outside an inline code span's closing backticks
+ * (`` `git clone`% ``): the whole chip is the term, so the glossary span
+ * wraps the code token. Markers *inside* the code content (`` `pip%` ``,
+ * `` `pip% install` ``) are left untouched here — raw glossary HTML between
+ * backticks would render as literal text — and are resolved at render time
+ * by the inline-code component via splitCodeGlossaryMarkers, which places
+ * the trigger around just the term inside the rendered chip.
  */
 function processCodeSpan(
   delim: string,
   inner: string,
   trailing: string,
   glossary: Map<string, GlossaryEntry>,
-  pattern: RegExp,
   linked: Set<string>,
 ): string {
-  const unescape = (value: string) => value.replace(/\\%/g, "%");
-
-  // Marker on the whole token: `pip`% or `pip%`.
-  let wholeTerm: string | null = null;
-  if (trailing === "%") wholeTerm = inner;
-  else if (inner.endsWith("%") && !inner.endsWith("\\%")) wholeTerm = inner.slice(0, -1);
-  if (wholeTerm !== null) {
-    const entry = resolveEntry(wholeTerm.trim(), glossary, linked);
-    if (entry) return spanFor(entry, `${delim}${unescape(wholeTerm)}${delim}`);
-    return `${delim}${unescape(inner)}${delim}${trailing}`;
+  if (trailing === "%") {
+    const entry = resolveEntry(inner.trim(), glossary, linked);
+    if (entry) return spanFor(entry, `${delim}${inner}${delim}`);
+    return `${delim}${inner}${delim}${trailing}`;
   }
+  return `${delim}${inner}${delim}`;
+}
 
-  // Marker after a term inside the code content: `pip% install`. Strip every
-  // resolvable marker and wrap the span for the first term that resolves.
-  let firstEntry: GlossaryEntry | undefined;
+export interface CodeGlossarySegment {
+  /** Text to render (marker `%` stripped, `\%` unescaped). */
+  text: string;
+  /** Canonical glossary term when this segment should be a trigger. */
+  term?: string;
+}
+
+/**
+ * Split inline-code text on `Term%` glossary markers for render-time
+ * resolution. Segments with `term` set should be wrapped in a glossary
+ * trigger; other segments render as-is. Unresolvable markers keep their
+ * literal `%`, and `\%` unescapes to a literal `%`.
+ */
+export function splitCodeGlossaryMarkers(text: string): CodeGlossarySegment[] {
+  const unescape = (value: string) => value.replace(/\\%/g, "%");
+  const glossary = getGlossary();
+  if (glossary.size === 0 || !text.includes("%")) return [{ text: unescape(text) }];
+
+  const pattern = buildPattern(glossary);
+  const segments: CodeGlossarySegment[] = [];
+  let cursor = 0;
   pattern.lastIndex = 0;
-  const cleaned = inner.replace(pattern, (full, termText: string, pct: string) => {
-    if (pct !== "%") return full;
-    const entry = resolveEntry(termText, glossary, linked);
-    if (!entry) return full;
-    firstEntry ??= entry;
-    return termText;
-  });
-  if (firstEntry) return spanFor(firstEntry, `${delim}${unescape(cleaned)}${delim}`);
-  return `${delim}${unescape(inner)}${delim}`;
+  for (let m = pattern.exec(text); m !== null; m = pattern.exec(text)) {
+    const [full, termText, pct] = m;
+    if (pct !== "%") continue;
+    const entry = resolveEntry(termText, glossary, new Set());
+    if (!entry) continue;
+    if (m.index > cursor) segments.push({ text: unescape(text.slice(cursor, m.index)) });
+    segments.push({ text: termText, term: entry.term });
+    cursor = m.index + full.length;
+  }
+  if (cursor < text.length) segments.push({ text: unescape(text.slice(cursor)) });
+  return segments;
 }
 
 /** Placeholder delimiter used to shield processed code spans from the later
@@ -256,7 +271,7 @@ function processLine(
     parts[i] = parts[i].replace(
       CODE_SPAN,
       (_full, delim: string, inner: string, trailing: string) => {
-        codeSpans.push(processCodeSpan(delim, inner, trailing, glossary, pattern, linked));
+        codeSpans.push(processCodeSpan(delim, inner, trailing, glossary, linked));
         return `${SHIELD}${codeSpans.length - 1}${SHIELD}`;
       },
     );
@@ -298,10 +313,10 @@ function processLine(
  *   produces false-positive links.
  * - Matching is case-insensitive and multi-word terms win over shorter ones.
  * - Markers work in any line, including headings, callouts, and table rows.
- *   Inline code accepts a marker outside (`` `pip`% ``), at the end
- *   (`` `pip%` ``), or after a term inside (`` `pip% install` ``) — the whole
- *   code span becomes the trigger. Fenced code blocks and links are skipped,
- *   and unmarked inline code is never touched.
+ *   A marker outside inline code (`` `pip`% ``) makes the whole chip the
+ *   trigger; markers inside code content (`` `pip%` ``, `` `pip% install` ``)
+ *   pass through untouched and are resolved at render time (see
+ *   splitCodeGlossaryMarkers). Fenced code blocks and links are skipped.
  */
 export function applyGlossaryMarkers(source: string): string {
   const glossary = getGlossary();
