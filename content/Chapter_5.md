@@ -13,7 +13,7 @@ When you download an AI project from the internet, the instructions usually say:
 ## Why `pip install` is the "forbidden command"
 LUMI uses a specialised high-performance storage system called **Lustre%**. Lustre is designed for "Big Data" - it is incredibly good at reading and writing massive files (like gigabytes of model weights or terabytes of text) at lightning speeds. However, Lustre has a weakness: **many small files**.
 
-A typical `pip install` of a library like PyTorch creates tens of thousands of tiny files. If everyone ran it, the filesystem would struggle to keep track of millions of tiny files, slowing down the entire supercomputer for everyone.
+A typical `pip install` of a library like PyTorch% creates tens of thousands of tiny files. If everyone ran it, the filesystem would struggle to keep track of millions of tiny files, slowing down the entire supercomputer for everyone.
 
 ## The solution: Containers
 To avoid the "Million File" problem, we use Containers. On LUMI, our Container tool of choice is called 'Singularity' (nowadays also known under its new name, 'Apptainer').
@@ -28,7 +28,7 @@ On LUMI, this "box" is a single file (usually ending in `.sif`).
 - **For You:** Your software is "frozen" inside that box. This means it will work exactly the same way every time, regardless of what updates happen to the rest of the supercomputer.
 
 > [!note] Why Apptainer instead of Docker?
-> Apptainer was built specifically for supercomputers. It allows you to run the same "boxes" as Docker, but it does so securely without needing administrative privileges ("root").
+> Apptainer was built specifically for supercomputers. It allows you to run the same "boxes" as Docker%, but it does so securely without needing administrative privileges ("root").
 
 
 ## How to get your AI software

@@ -101,6 +101,8 @@ A quick reference for all technical terms used in this guide, listed by chapter.
 | **`venv`** | Virtual Environment. A private, self-contained folder where you install Python libraries for a specific project so they do not interfere with other projects on the system. |
 | **Virtual Environment** | A private, self-contained folder where you install Python libraries for a specific project so they do not interfere with other projects on the system. |
 | **Module** | A pre-installed software package on LUMI that you activate with `module load`. |
+| **PyTorch** | A popular open-source machine learning framework used for deep learning and artificial intelligence. |
+| **Docker** | A popular platform for building and running software in isolated Containers. |
 
 ---
 
