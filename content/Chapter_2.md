@@ -32,7 +32,7 @@ Before you generate your keys and follow the official guide, please read these i
 - **Multiple devices:** If you use multiple computers (e.g., a laptop and a desktop), generate a new, separate Key Pair on each device. Uploading multiple Public Keys to the LUMI portal simply gives each device its own independent access - any of them will log you into the exact same LUMI account.
 - **Placeholder values:** In this guide, `<angle brackets>` indicate a placeholder - replace the entire thing, **brackets included**, with your own value. Make sure to remove the `< >` brackets! For example, `<your_lumi_username>` becomes `smithmar`.
 
-The exact command and steps vary slightly depending on whether you are using Windows, macOS, or Linux. Make sure to select the "From a terminal (all OS)" tab in the guide below, even if you are on Windows.
+The exact command and steps vary slightly depending on whether you are using Windows, macOS, or Linux. Make sure to select the "From a terminal (all OS%)" tab in the guide below, even if you are on Windows.
 
 [Follow the Official guide to create and upload your SSH Keys](https://docs.lumi-supercomputer.eu/firststeps/SSH-keys/)
 
