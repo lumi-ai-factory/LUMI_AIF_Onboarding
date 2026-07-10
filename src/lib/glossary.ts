@@ -175,12 +175,69 @@ function resolveEntry(
 }
 
 /**
- * Matches an inline-formatted token (code, bold, or italic) whose `%` marker
- * sits either just inside the closing delimiter (`` `term%` ``, `*term%*`) or
- * just outside it (`` `term`% ``, `*term*%`). Group 1 is the delimiter, group 2
- * the inner text, group 3 the optional trailing marker.
+ * Matches an inline code span (`` `code` ``, ``` ``code`` ```) with an
+ * optional trailing `%` marker after the closing backticks. Group 1 is the
+ * opening backtick run, group 2 the code content, group 3 the optional
+ * trailing marker.
  */
-const FORMATTED_MARKER = /(\*\*|__|\*|_|`)([\s\S]+?)\1(%?)/g;
+const CODE_SPAN = /(`+)([\s\S]+?)\1(%?)/g;
+
+/**
+ * Matches a bold/italic token whose `%` marker sits either just inside the
+ * closing delimiter (`*term%*`) or just outside it (`*term*%`). Inline code
+ * is handled separately by CODE_SPAN. Group 1 is the delimiter, group 2 the
+ * inner text, group 3 the optional trailing marker.
+ */
+const FORMATTED_MARKER = /(\*\*|__|\*|_)([\s\S]+?)\1(%?)/g;
+
+/**
+ * Handle `%` markers attached to an inline code span. The marker may sit
+ * outside the closing backticks (`` `pip`% ``), just inside them
+ * (`` `pip%` ``), or after a term in the middle of the code
+ * (`` `pip% install` ``). In every case the whole code span becomes the
+ * glossary trigger, so the rendered chip stays in one piece. Raw glossary
+ * HTML must never end up between the backticks — markdown would render it
+ * as literal text.
+ */
+function processCodeSpan(
+  delim: string,
+  inner: string,
+  trailing: string,
+  glossary: Map<string, GlossaryEntry>,
+  pattern: RegExp,
+  linked: Set<string>,
+): string {
+  const unescape = (value: string) => value.replace(/\\%/g, "%");
+
+  // Marker on the whole token: `pip`% or `pip%`.
+  let wholeTerm: string | null = null;
+  if (trailing === "%") wholeTerm = inner;
+  else if (inner.endsWith("%") && !inner.endsWith("\\%")) wholeTerm = inner.slice(0, -1);
+  if (wholeTerm !== null) {
+    const entry = resolveEntry(wholeTerm.trim(), glossary, linked);
+    if (entry) return spanFor(entry, `${delim}${unescape(wholeTerm)}${delim}`);
+    return `${delim}${unescape(inner)}${delim}${trailing}`;
+  }
+
+  // Marker after a term inside the code content: `pip% install`. Strip every
+  // resolvable marker and wrap the span for the first term that resolves.
+  let firstEntry: GlossaryEntry | undefined;
+  pattern.lastIndex = 0;
+  const cleaned = inner.replace(pattern, (full, termText: string, pct: string) => {
+    if (pct !== "%") return full;
+    const entry = resolveEntry(termText, glossary, linked);
+    if (!entry) return full;
+    firstEntry ??= entry;
+    return termText;
+  });
+  if (firstEntry) return spanFor(firstEntry, `${delim}${unescape(cleaned)}${delim}`);
+  return `${delim}${unescape(inner)}${delim}`;
+}
+
+/** Placeholder delimiter used to shield processed code spans from the later
+ *  passes — a private-use codepoint that never appears in markdown content. */
+const SHIELD = String.fromCharCode(0xe000);
+const SHIELDED_CODE_SPAN = new RegExp(`${SHIELD}(\\d+)${SHIELD}`, "g");
 
 function processLine(
   line: string,
@@ -193,7 +250,18 @@ function processLine(
   for (let i = 0; i < parts.length; i++) {
     if (i % 2 === 1) continue; // odd parts are links
 
-    // 1) Formatted terms with the `%` marker inside or outside the delimiters.
+    // 1) Inline code spans. Handle their markers now and shield their
+    //    contents behind placeholders so the passes below never touch them.
+    const codeSpans: string[] = [];
+    parts[i] = parts[i].replace(
+      CODE_SPAN,
+      (_full, delim: string, inner: string, trailing: string) => {
+        codeSpans.push(processCodeSpan(delim, inner, trailing, glossary, pattern, linked));
+        return `${SHIELD}${codeSpans.length - 1}${SHIELD}`;
+      },
+    );
+
+    // 2) Bold/italic terms with the `%` marker inside or outside the delimiters.
     parts[i] = parts[i].replace(
       FORMATTED_MARKER,
       (full, delim: string, inner: string, trailing: string) => {
@@ -211,10 +279,13 @@ function processLine(
       },
     );
 
-    // 2) Plain-text terms with a trailing `%`.
+    // 3) Plain-text terms with a trailing `%`.
     parts[i] = processSegment(parts[i], glossary, pattern, linked);
     // Unescape \% to %
     parts[i] = parts[i].replace(/\\%/g, "%");
+
+    // 4) Restore the shielded code spans.
+    parts[i] = parts[i].replace(SHIELDED_CODE_SPAN, (_m, n: string) => codeSpans[Number(n)]);
   }
   return parts.join("");
 }
@@ -226,7 +297,11 @@ function processLine(
  *   from the output. There is no automatic matching, so ordinary prose never
  *   produces false-positive links.
  * - Matching is case-insensitive and multi-word terms win over shorter ones.
- * - Headings, table rows, fenced code, inline code, and links are skipped.
+ * - Markers work in any line, including headings, callouts, and table rows.
+ *   Inline code accepts a marker outside (`` `pip`% ``), at the end
+ *   (`` `pip%` ``), or after a term inside (`` `pip% install` ``) — the whole
+ *   code span becomes the trigger. Fenced code blocks and links are skipped,
+ *   and unmarked inline code is never touched.
  */
 export function applyGlossaryMarkers(source: string): string {
   const glossary = getGlossary();
