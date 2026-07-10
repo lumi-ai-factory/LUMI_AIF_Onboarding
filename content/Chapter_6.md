@@ -1,22 +1,22 @@
 ---
-title: "Chapter 6: GitHub, the World’s Collaboration Platform"
+title: "Chapter 6: GitHub, the world’s collaboration platform"
 nav_order: 6
 ---
 
-# Chapter 6: GitHub, the World’s Collaboration Platform
+# Chapter 6: GitHub, the world’s collaboration platform
 
 If you’ve ever used Google Docs or a shared Dropbox folder to work on a document with a team, you already understand the spirit of GitHub.
 
 GitHub is the world’s largest platform for hosting and sharing code. A lot of AI research, including the code for working with AI on LUMI, is hosted on GitHub. It isn't just a place to store files; it's a place where developers "track" every single change made to a project, allowing them to collaborate without accidentally overwriting each other's work.
 
 
-## 🐺 Why Do We Use It on LUMI?
+## Why do we use it on LUMI?
 The AI community moves incredibly fast. Instead of downloading a static "version 1.0" zip file that becomes outdated in a week, we use GitHub to download the project in a way that lets us easily pull in (download) the latest updates.
 
 The good news? Git% (the tool used to talk to GitHub) is already installed and configured for everyone on LUMI. You don't need to install anything to start using it.
 
 
-## ⬇️ Getting the Code: `git clone`%
+## Getting the code: `git clone`%
 When you find an AI project on one of these platforms that you want to use, you "clone" it. Think of cloning simply as downloading the project directory, but with extra Git features attached.
 
 The Command:
@@ -34,7 +34,7 @@ A new directory will appear on your LUMI storage (e.g., in your `/scratch`% dire
 > Your `$HOME` directory has a small 20 GB / 100k file quota. Always clone Repositories into your project's directories, which have much more space for code and data.
 
 
-## 🔄 Staying Up to Date: `git pull`%
+## Staying up to date: `git pull`%
 AI developers frequently update their code (including LUMI guides and examples) to fix bugs or improve performance. If there has been new work published in the Repository, it doesn't automatically get reflected in your LUMI directory of the Repository. To 'update' the directory and download the new changes, navigate inside your project directory and run:
 
 ```bash
@@ -43,17 +43,17 @@ git pull
 
 This command checks GitHub for any new changes and "pulls" them down to your LUMI directory.
 
-## 📚 Learn More
+## Learn more
 Git is a deep and powerful tool used by professional developers. While clone and pull are enough to get you started as a user, you may eventually want to learn how to save your own changes and contribute back. For that, we recommend reading GitHub's short official introduction to Git and its basic commands:
 
-[👉 About Git](https://docs.github.com/en/get-started/using-git/about-git) **(Optional)**
+[About Git](https://docs.github.com/en/get-started/using-git/about-git) **(Optional)**
 
-## ✅ Summary Checklist
+## Summary checklist
 - You understand what GitHub is and why it is used on LUMI.
 - You know how to download a project from GitHub using `git clone`.
 - You know how to update your local copy with `git pull`.
 
-## 📝 Knowledge Check
+## Knowledge check
 
 ```quiz
 title: Chapter 6 Quiz

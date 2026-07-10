@@ -1,9 +1,9 @@
 ---
-title: "Chapter 4: Navigating LUMI (Nodes and Storage)"
+title: "Chapter 4: Navigating LUMI (nodes and storage)"
 nav_order: 4
 ---
 
-# Chapter 4: Navigating LUMI (Nodes and Storage)
+# Chapter 4: Navigating LUMI (nodes and storage)
 
 Think of LUMI not as one giant entity, but as a massive *collection* of computers connected by an incredibly fast network.
 
@@ -11,15 +11,15 @@ Think of LUMI not as one giant entity, but as a massive *collection* of computer
 > You might wonder why we connect thousands of computers together instead of just building one giant one. To learn about how supercomputers use **parallel processing** to solve massive AI challenges (and how they differ from your laptop), check out the article: [Why supercomputing and LUMI?](https://lumi-ai-factory.eu/articles/blog-why-supercomputing-and-lumi/) **(Optional)**
 
 
-## 🏢 The "Two-Room" Rule: Login vs. Compute
+## The "two-room" rule: Login vs. compute
 When you log in via SSH (as we did in Chapter 2), you aren't actually on the "super" part of the supercomputer yet. You are in the **Lobby**.
 
-### 1. The Login Nodes (The Lobby)
+### 1. The Login Nodes (The lobby)
 The Login Nodes are shared by hundreds of people at once. Login Nodes are named `uan01`, `uan02`, etc.
 *   **What to do here:** Organise files, write code in `nano`, check your project balance, and submit your "work orders" (Jobs).
 *   **What NOT to do:** Do not run anything computationally heavy, such as AI training or heavy data processing here. If the "Lobby" gets too crowded or someone starts heavy machinery there, it slows down for everyone. LUMI has automatic guards that will stop your processes if they use too much power in the Lobby. For such heavy processes, such as AI workloads, we use the Compute Nodes.
 
-### 2. The Compute Nodes (The Factory Room)
+### 2. The Compute Nodes (The factory room)
 This is where the magic happens. These are thousands of individual computers equipped with world-class GPUs and CPUs.
 *   **How to get there:** You cannot "log in" to a Compute Node% directly. Instead, you "book" time on them using the Slurm scheduler (which we will cover in Chapter 7). Unlike the Login Node%, you don't share CPUs and GPUs with other users; the resources you request are exclusively yours for the duration of your Job.
 
@@ -29,11 +29,11 @@ This is where the magic happens. These are thousands of individual computers equ
 > The `@uan4` in the Command Line indicates that you are on that Login Node. Compute Nodes will have longer names like `nid007628`.
 
 
-## 🏎️ Choosing Your Engine: CPU vs. GPU
+## Choosing your engine: CPU vs. GPU
 
-**What is a CPU?** The CPU (Central Processing Unit) is the general-purpose brain of a computer. Think of it as a small team of brilliant professors — it can solve very complex problems, but only a few at a time, one after another.
+**What is a CPU?** The CPU (Central Processing Unit) is the general-purpose brain of a computer. Think of it as a small team of brilliant professors - it can solve very complex problems, but only a few at a time, one after another.
 
-**What is a GPU?** The GPU (Graphics Processing Unit) is more like a stadium full of students, each doing simple arithmetic simultaneously. Originally designed to calculate the colour of millions of pixels at once for video games, researchers discovered that this massive parallel math power is exactly what AI needs. While you can train AI models on a CPU, it would be impractically slow — a Job that takes hours on GPUs could take weeks on CPUs.
+**What is a GPU?** The GPU (Graphics Processing Unit) is more like a stadium full of students, each doing simple arithmetic simultaneously. Originally designed to calculate the colour of millions of pixels at once for video games, researchers discovered that this massive parallel math power is exactly what AI needs. While you can train AI models on a CPU, it would be impractically slow - a Job that takes hours on GPUs could take weeks on CPUs.
 
 LUMI is divided into several "Partitions%" (sections) depending on what kind of hardware% or service you need. The two main Partitions are:
 
@@ -55,7 +55,7 @@ Within each of those hardware Partitions%, the Slurm scheduler further divides r
 | debug | 30 minutes | 2 | 4 nodes | Debugging and testing |
 
 > [!note] What is a Job?
-> **A Job** is any task you ask the supercomputer to run — a script that trains a model, processes a dataset, or runs a simulation. You write the instructions, submit them, and LUMI executes them for you.
+> **A Job** is any task you ask the supercomputer to run - a script that trains a model, processes a dataset, or runs a simulation. You write the instructions, submit them, and LUMI executes them for you.
 
 **LUMI-G (GPU% Partitions)**
 | Name | Max walltime% (duration) | Max Jobs% | Max resources/job | Purpose |
@@ -64,25 +64,25 @@ Within each of those hardware Partitions%, the Slurm scheduler further divides r
 | small-g | 3 days | 210 | 4 nodes | Small GPU Jobs |
 | dev-g | 2 hours | 2 | 8 nodes | Debugging |
 
-[👉 Full list of Slurm Partitions](https://docs.lumi-supercomputer.eu/runjobs/scheduled-jobs/partitions/) **(Optional)**
+[Full list of Slurm Partitions](https://docs.lumi-supercomputer.eu/runjobs/scheduled-jobs/partitions/) **(Optional)**
 
-### 🤝 Exclusive vs. Shared Nodes
+### Exclusive vs. shared nodes
 When you book resources from the `standard-g` Partition, Slurm allocates **entire physical nodes exclusively to you**. You are the only person running code on that machine, and you are billed for all 8 GPUs on it, even if your code only uses 1.
 
 However, if you only need 1 or 2 GPUs for a smaller task, booking a whole node would be a massive waste of resources and credits. This is where `small-g` and `dev-g` come in. These are **shared Partitions**. When you request just 1 GPU on `small-g`, Slurm might place your Job on the exact same physical server as another user who requested 2 GPUs. You are "sharing" the node, meaning you are both running programs on the exact same underlying operating system at the exact same time!
 
-### 🖥️ Inside a LUMI-G Compute Node (The Hardware%)
+### Inside a LUMI-G Compute Node (the hardware%)
 
 When you book a full GPU node on LUMI-G, here is exactly what you get inside that single physical server:
 
 *   **1 × 64-core CPU:** An AMD EPYC processor that acts as the manager, handling data loading and feeding it to the GPUs. However, out of these 64 cores, only 56 are available for you to use as the rest are reserved for the operating system. 
 *   **8 × 64GB DDR4 RAM:** totalling 512GB per node, used by the CPU to load datasets, models, run data preprocessing and hold information before sending it to the GPU. However, only 60GB per stick (480GB total) is available to you as the rest is reserved for the operating system.
 *   **4 × AMD MI250X GPUs:** The incredibly powerful accelerators where your AI models are actually trained.
-*   **Zero Local Storage:** There are no hard drives inside the Compute Nodes — all your data is accessed directly via LUMI's massive, high-speed network storage.
+*   **Zero Local Storage:** There are no hard drives inside the Compute Nodes - all your data is accessed directly via LUMI's massive, high-speed network storage.
 
 ![LUMI-G Hardware](./assets/LUMI_G_Hardware.svg)
 
-#### The "GPU vs. GCD" Confusion (Important!)
+#### The "GPU vs. GCD" confusion (important!)
 This is one of the most important concepts to understand about LUMI's hardware%. 
 
 Each AMD MI250X is physically one large chip, but inside, it is actually split into **two independent halves** called **Graphics Compute Dies (GCDs%)**. Each GCD acts as its own separate GPU with its own 64 GB of dedicated video memory (VRAM).
@@ -94,12 +94,12 @@ Because they operate independently, the software% and the Slurm% scheduler (cove
 
 **Why does this matter?** Because when Slurm% refers to "GPUs", it actually means "GCDs". If you look at a full LUMI-G node, Slurm will say it has **8 GPUs available**, not 4. When you request resources for your Job, remember: **1 Slurm GPU = 1 GCD = half of a physical MI250X.**
 
-[👉 LUMI-G (GPU Partition) hardware description](https://docs.lumi-supercomputer.eu/hardware/lumig/) **(Optional)**
+[LUMI-G (GPU Partition) hardware description](https://docs.lumi-supercomputer.eu/hardware/lumig/) **(Optional)**
 
-[👉 LUMI-C (CPU Partition) hardware description](https://docs.lumi-supercomputer.eu/hardware/lumic/) **(Optional)**
+[LUMI-C (CPU Partition) hardware description](https://docs.lumi-supercomputer.eu/hardware/lumic/) **(Optional)**
 
 
-## 📂 Where Does My Data Live? (Storage Tiers)
+## Where does my data live? (Storage tiers)
 
 On your laptop, everything is usually on one "C: Drive." On LUMI, storage is split into different tiers. Using the wrong one can make your AI training run much more slowly!
 
@@ -116,17 +116,17 @@ On your laptop, everything is usually on one "C: Drive." On LUMI, storage is spl
 > [!note] Flash is fast but expensive
 > Flash is 3x more expensive per TB because it uses faster NVMe drives. Use it only when your Job needs very fast Input and Output (I/O), i.e., the speed of reading from and writing to the drive.
 
-[👉 More info on LUMI Storage](https://docs.lumi-supercomputer.eu/storage/) **(Optional)**
+[More info on LUMI Storage](https://docs.lumi-supercomputer.eu/storage/) **(Optional)**
 
-### 🔒 Jobs and Data Privacy
+### Jobs and data privacy
 On a shared supercomputer, privacy behaves differently than on a personal computer:
 *   **Storage Access:** Your home directory (`/users`) is private to you. However, project directories (`/project`, `/scratch`, `/flash`) are by default **fully visible and accessible** to all members of your project.
 *   **Shared Compute Nodes:** When using shared Partitions (such as `small-g` or `dev-g`), other users running on the same node can see the *names* of the commands and programs you are running (like seeing `python my_script.py` in a task manager). They cannot see the actual contents of your files or the output of your programs.
 *   **Job Details:** Information about your submitted Slurm Jobs (including Job names and submission paths) is visible to all users on the system via monitoring commands.
 
-[👉 Read the official LUMI Jobs and Data Privacy Guide](https://docs.lumi-supercomputer.eu/runjobs/lumi_env/privacy-on-system/) to understand visibility rules and best practices for securing sensitive information. **(Optional — recommended if you work with confidential code or data)**
+[Read the official LUMI Jobs and Data Privacy Guide](https://docs.lumi-supercomputer.eu/runjobs/lumi_env/privacy-on-system/) to understand visibility rules and best practices for securing sensitive information. **(Optional - recommended if you work with confidential code or data)**
 
-## 🛡️ GDPR and Sensitive Data
+## GDPR and sensitive data
 Beyond internal system visibility, you must also consider legal compliance before uploading datasets. When it comes to personal and sensitive information, it is important to distinguish between two types of data processing:
 
 1. **LUMI User Data:** LUMI processes personal data related to its users (such as names, organisational affiliations, and contact information) for account management and service operation. For this, LUMI acts as the Data Controller%. You can read more in the [Privacy Notice for processing of user data on the LUMI Service](https://lumi-supercomputer.eu/privacy-notice-for-processing-of-user-data-on-the-lumi-service/).
@@ -135,9 +135,9 @@ Beyond internal system visibility, you must also consider legal compliance befor
    - **Identifiable Data:** Identifiable personal data may be processed provided that appropriate security controls and contractual arrangements, including a Data Processing Agreement (DPA)% where applicable, are in place.
    - **Highly Sensitive Data (Special Categories):** You must exercise extreme caution before processing special categories of personal data, such as health or biometric records. While the Terms of Use may allow this under specific conditions, LUMI's shared architecture means that guaranteeing the secure deletion of data after processing is not straightforward. Therefore, if your project requires handling such sensitive information, you are strongly encouraged to contact the LUMI team in advance to assess your use case and establish the necessary safeguards before uploading any data.
 
-[👉 Read the LUMI General Terms of Use](https://lumi-supercomputer.eu/wp-content/uploads/2026/03/LUMI-General-Terms-of-Use_2026.pdf) **(Optional — read it before processing personal data)**
+[Read the LUMI General Terms of Use](https://lumi-supercomputer.eu/wp-content/uploads/2026/03/LUMI-General-Terms-of-Use_2026.pdf) **(Optional - read it before processing personal data)**
 
-## 🚚 Moving Your Data to LUMI
+## Moving your data to LUMI
 
 As an industry customer, you likely have your own datasets ready to go. To get them onto LUMI:
 
@@ -147,17 +147,17 @@ As an industry customer, you likely have your own datasets ready to go. To get t
 > [!warning] Data encryption%
 > Although data traffic is encrypted, data is **not** stored encrypted by default on LUMI. Sensitive data should therefore be encrypted before being added to the service.
 
-[👉 How to move your data to LUMI](https://docs.lumi-supercomputer.eu/firststeps/movingdata/)
+[How to move your data to LUMI](https://docs.lumi-supercomputer.eu/firststeps/movingdata/)
 
 
-## ✅ Summary Checklist
+## Summary checklist
 - You understand the difference between Login Nodes and Compute Nodes.
 - You understand the difference between LUMI-C and LUMI-G.
 - You know which storage tier to use for your data.
 - You understand how privacy works on shared nodes and directories.
 - You know the rules for processing personal and sensitive data on LUMI.
 
-## 📝 Knowledge Check
+## Knowledge check
 
 ```quiz
 title: Chapter 4 Quiz

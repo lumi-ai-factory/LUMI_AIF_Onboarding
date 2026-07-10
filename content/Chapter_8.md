@@ -1,22 +1,22 @@
 ---
-title: "Chapter 8: Graduation & Next Steps"
+title: "Chapter 8: Graduation & next steps"
 nav_order: 8
 ---
 
-# Chapter 8: Graduation & Next Steps
+# Chapter 8: Graduation & next steps
 
 Congratulations! You have successfully completed the LUMI AI Factory onboarding. You've progressed from learning how to securely log in with SSH Keys (Chapter 2) and navigating the Command Line% (Chapter 3), to understanding LUMI's powerful hardware% and storage architecture (Chapter 4). You also learned how to use Apptainer% / Singularity% Containers% for reproducible AI environments (Chapter 5), how to retrieve code from GitHub% (Chapter 6), and finally, how to request compute resources from Slurm% to run your first AI Job (Chapter 7). You now possess the foundational "survival skills" needed to harness one of the world's most powerful supercomputers.
 
 > [!warning] We would love to hear your feedback!
 > These materials are in active development. If you have suggestions, encounter difficulties, or want to share your experience, please fill out our [short feedback form](https://link.webropolsurveys.com/S/574AE9D8B276E808). It only takes a few minutes and helps us improve the guide for everyone.
 
-## 🎓 Graduation Exercise
+## Graduation exercise
 
 To truly graduate, let's put everything you've learned into practice with one final, comprehensive exercise. Your task is to complete the [LUMI AI Guide](https://github.com/Lumi-supercomputer/LUMI-AI-Guide). 
 
 The LUMI AI Guide is a 10-chapter deep dive designed to help you migrate machine learning applications from your local computer to LUMI. Instead of dry theory, you will work through a hands-on, end-to-end example: training an image classification model (PyTorch's Vision Transformer) on the ImageNet dataset.
 
-You will start with a basic Python script that runs on a laptop, and chapter-by-chapter, you will modify it to run efficiently at scale on LUMI's AMD GPUs. Along the way, you will practise everything from this onboarding—using Containers%, navigating storage, and submitting Slurm% Jobs—while learning advanced concepts like distributed multi-node training. Finally, the guide covers the transition from training to production, concluding with a chapter on memory-efficient LLM inference hosting using vLLM.
+You will start with a basic Python script that runs on a laptop, and chapter-by-chapter, you will modify it to run efficiently at scale on LUMI's AMD GPUs. Along the way, you will practise everything from this onboarding - using Containers%, navigating storage, and submitting Slurm% Jobs - while learning advanced concepts like distributed multi-node training. Finally, the guide covers the transition from training to production, concluding with a chapter on memory-efficient LLM inference hosting using vLLM.
 
 Take your time with it, and remember to use the foundational "survival skills" you've acquired here!
 
@@ -24,23 +24,23 @@ Take your time with it, and remember to use the foundational "survival skills" y
 > The LUMI AI Guide provides all the completed Python and Slurm scripts in its Repository. If you do not have a programming background, you can easily follow along, run the provided commands, and watch the AI models train without writing a single line of code! However, to truly understand *why* the Python code must be modified to scale across multiple GPUs, a basic understanding of Python and Machine Learning concepts is still highly recommended.
 
 
-## 📚 Next Steps: Advanced Materials
+## Next steps: Advanced materials
 
-Now that you've mastered the basics, here are some excellent resources to continue your journey — pick whichever match your goals:
+Now that you've mastered the basics, here are some excellent resources to continue your journey - pick whichever match your goals:
 
-- [👉 Working with LLMs](https://docs.csc.fi/support/tutorials/ml-llm/): Tutorials and examples on LLM fine-tuning, quantisation and Retrieval-Augmented Generation (RAG).
-- [👉 Technical Primer on Large Language Models](https://arbruiser.github.io/Technical-primer-on-LLMs/): A deep dive into the theory of LLMs: model architectures (MoE vs. Dense), attention mechanisms (GQA), memory bottlenecks, and scaling strategies like Tensor Parallelism.
-- [👉 HPC Guides Collection](https://github.com/lumi-ai-factory/ai-hpc-guide-collection): A curated Repository of various High-Performance Computing and AI guides.
-
-
-## 🤖 Give Your AI Assistant LUMI Knowledge
-
-Out of the box, AI chatbots often don't know LUMI's specific configurations and policies. To fix this, the LUMI AI Factory hosts a free, public MCP% server that lets AI assistants search the official LUMI documentation directly. If your AI tool supports the Model Context Protocol — like Claude, ChatGPT (Developer mode), VS Code Copilot, or coding agents such as OpenCode — you can connect it using this address: `https://lumi-aif-agents.2.rahtiapp.fi/mcp` (no authentication needed).
-
-For setup details — and for how to run AI coding agents directly on LUMI — see [Infrastructure for AI Agents](https://docs.lumi-supercomputer.eu/laif/software/agent-infrastructure/).
+- [Working with LLMs](https://docs.csc.fi/support/tutorials/ml-llm/): Tutorials and examples on LLM fine-tuning, quantisation and Retrieval-Augmented Generation (RAG).
+- [Technical Primer on Large Language Models](https://arbruiser.github.io/Technical-primer-on-LLMs/): A deep dive into the theory of LLMs: model architectures (MoE vs. Dense), attention mechanisms (GQA), memory bottlenecks, and scaling strategies like Tensor Parallelism.
+- [HPC Guides Collection](https://github.com/lumi-ai-factory/ai-hpc-guide-collection): A curated Repository of various High-Performance Computing and AI guides.
 
 
-## 🔔 Stay Updated
+## Give your AI assistant LUMI knowledge
+
+Out of the box, AI chatbots often don't know LUMI's specific configurations and policies. To fix this, the LUMI AI Factory hosts a free, public MCP% server that lets AI assistants search the official LUMI documentation directly. If your AI tool supports the Model Context Protocol - like Claude, ChatGPT (Developer mode), VS Code Copilot, or coding agents such as OpenCode - you can connect it using this address: `https://lumi-aif-agents.2.rahtiapp.fi/mcp` (no authentication needed).
+
+For setup details - and for how to run AI coding agents directly on LUMI - see [Infrastructure for AI Agents](https://docs.lumi-supercomputer.eu/laif/software/agent-infrastructure/).
+
+
+## Stay updated
 
 The AI landscape and the LUMI ecosystem evolve rapidly. Keep yourself in the loop:
 
@@ -50,21 +50,21 @@ The AI landscape and the LUMI ecosystem evolve rapidly. Keep yourself in the loo
 - **Services:** Explore the LUMI AI Factory [Service Catalogue](https://lumi-ai-factory.eu/service-catalogue/) to see what other expert support and resources are available.
 
 
-## 🆘 Getting Help
+## Getting help
 
 Even the most experienced developers get stuck. When you do, don't struggle in silence!
 
 - **AI Factory Support:** reach out via the [LUMI AI Factory User Support](https://lumi-ai-factory.eu/user-support/).
 
-## ✅ Summary Checklist
+## Summary checklist
 - You are ready for the Graduation Exercise.
 - You have completed the LUMI AIF Onboarding.
 - You know where to find advanced guides and help.
 
-## 📝 Final Knowledge Check
+## Final knowledge check
 
 ```quiz
-title: Final Quiz: LUMI Survival Guide
+title: Final quiz: LUMI survival guide
 
 Q: When typing your SSH passphrase in the Terminal during login, what should you expect to see?
 - [ ] Asterisks (***) hiding your password.

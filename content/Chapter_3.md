@@ -1,9 +1,9 @@
 ---
-title: "Chapter 3: The Command Line – Your Primary Tool"
+title: "Chapter 3: The Command Line - your primary tool"
 nav_order: 3
 ---
 
-# Chapter 3: The Command Line – Your Primary Tool
+# Chapter 3: The Command Line - your primary tool
 
 In the previous chapter, you've logged in to LUMI. If you were successful, you saw LUMI's login wolf, a "Did you know?" fact, and a Command Line% that looked similar to this: 
 
@@ -14,7 +14,7 @@ In the previous chapter, you've logged in to LUMI. If you were successful, you s
 **Welcome to the Command Line Interface (CLI).** The underlying program that actually reads and executes your commands here is known as the **Shell%**.
 
 
-## 🖱️ Navigation Without a Mouse
+## Navigation without a mouse
 When you use Windows or macOS, you see folders and icons. You double-click a folder to see what’s inside.
 On LUMI, those folders (called directories in the Command Line) and files are still there, but you are "navigating by description" rather than "navigating by sight."
 
@@ -23,7 +23,7 @@ On LUMI, those folders (called directories in the Command Line) and files are st
 - Automation: You can write a list of commands (a script%) that LUMI can follow while you are asleep. You can't "script" a mouse click easily.
 - Efficiency: LUMI is optimised for math and data processing. Displaying a fancy visual desktop for thousands of users would waste massive amounts of power that should be used for your AI models instead.
 
-## 📚 Command Line Study Materials
+## Command Line study materials
 To learn about the Command Line and the commands to use it, we recommend reading [Linux Command Line for beginners](https://ubuntu.com/desktop/docs/en/latest/tutorial/the-linux-command-line-for-beginners/). 
 
 If you are more of a visual learner or if this is your first time learning about the Command Line%, watch this [video guide](https://www.youtube.com/watch?v=16d2lHc0Pe8) **(Optional)**.
@@ -33,7 +33,7 @@ If you are more of a visual learner or if this is your first time learning about
 > If you use the command to delete files (`rm`), the file is gone instantly and permanently. We must always be careful and double-check our commands before hitting Enter.
 
 
-## 🏋️ Practice
+## Practice
 The best way to learn after having studied some theory is to **practise**. Log in to LUMI (see Chapter 2) and let's apply what you've learned in the guides in our Command Line Terminal on LUMI. Follow these step-by-step instructions:
 
 > [!tip] Build muscle memory
@@ -138,7 +138,7 @@ The best way to learn after having studied some theory is to **practise**. Log i
 
 You can learn more about Linux Command Line on the [Linux basics tutorial for CSC](https://docs.csc.fi/support/tutorials/env-guide/) page. **(Optional)**
 
-## 📝 Your Command Line Cheatsheet
+## Your Command Line cheatsheet
 
 | Command / Key | Action | Quick Note |
 | :--- | :--- | :--- |
@@ -157,12 +157,12 @@ You can learn more about Linux Command Line on the [Linux basics tutorial for CS
 | `Ctrl + X` | Exit | Close the `nano` editor. |
 | `Ctrl + D` | Disconnect | Logout from LUMI and return to your local machine. |
 
-## ✅ Summary Checklist
+## Summary checklist
 - You know what a Command Line is and why it is used.
 - You have learned the basics of the Command Line.
 - You have practised learned commands on LUMI.
 
-## 📝 Knowledge Check
+## Knowledge check
 
 ```quiz
 title: Chapter 3 Quiz

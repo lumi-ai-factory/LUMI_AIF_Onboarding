@@ -22,7 +22,7 @@ A quick reference for all technical terms used in this guide, listed by chapter.
 
 ---
 
-## Chapter 2: The Keys to the Castle
+## Chapter 2: The keys to the castle
 
 | Term | Definition |
 |:-----|:-----------|
@@ -44,8 +44,8 @@ A quick reference for all technical terms used in this guide, listed by chapter.
 |:-----|:-----------|
 | **script** | A list of commands saved in a file that LUMI can execute automatically, even while you're away. |
 | **Shell** | The program that interprets and executes your typed commands. |
-| **CLI** | Command Line Interface. Another name for the Command Line — a text-based way to interact with a computer. |
-| **Command Line Interface** | Another name for the Command Line — a text-based way to interact with a computer. |
+| **CLI** | Command Line Interface. Another name for the Command Line - a text-based way to interact with a computer. |
+| **Command Line Interface** | Another name for the Command Line - a text-based way to interact with a computer. |
 | **directory** | The command-line term for "folder." |
 | **Working Directory** | The directory you are currently "inside" in the Command Line. Shown by the `pwd` command. |
 | **`$HOME`** | Your personal user directory on LUMI, located at `/users/<username>`. Where you land after logging in. |
@@ -60,7 +60,7 @@ A quick reference for all technical terms used in this guide, listed by chapter.
 | **node** | An individual computer within the LUMI supercomputer. |
 | **Login Node** | A shared "lobby" node where you manage files and submit Jobs. Not for heavy computation. Named `uan01`, `uan02`, etc. |
 | **Compute Node** | A powerful node reserved exclusively for running your Jobs. Named like `nid007628`. |
-| **Job** | Any task you ask the supercomputer to run — a script that trains a model, processes data, or runs a simulation. |
+| **Job** | Any task you ask the supercomputer to run - a script that trains a model, processes data, or runs a simulation. |
 | **processor** | The "brain" of the computer that carries out instructions and calculations. Often used interchangeably with CPU. |
 | **CPU** | Central Processing Unit. The general-purpose processor of a computer. Handles complex tasks sequentially. |
 | **GPU** | Graphics Processing Unit. A specialised processor that is incredibly fast at doing many simple calculations at the same time. Essential for AI. |
@@ -69,9 +69,9 @@ A quick reference for all technical terms used in this guide, listed by chapter.
 | **Slurm Partition** | A subdivision within a hardware Partition that sets limits on Job size, duration, and number of concurrent Jobs (e.g., `standard`, `small-g`, `dev-g`). |
 | **`/project`** | Shared project storage (50 GB). Good for files the whole team needs. |
 | **`/scratch`** | High-capacity temporary storage (50 TB). Your main working area for datasets, outputs, and checkpoints. |
-| **`/flash`** | Ultra-fast temporary storage (2 TB). 3x more expensive — use only when your Job needs very fast I/O. |
-| **LUMI-C** | The CPU Partition of LUMI — nodes with powerful processors but no GPUs. |
-| **LUMI-G** | The GPU Partition of LUMI — nodes equipped with AMD MI250X GPUs for AI workloads. |
+| **`/flash`** | Ultra-fast temporary storage (2 TB). 3x more expensive - use only when your Job needs very fast I/O. |
+| **LUMI-C** | The CPU Partition of LUMI - nodes with powerful processors but no GPUs. |
+| **LUMI-G** | The GPU Partition of LUMI - nodes equipped with AMD MI250X GPUs for AI workloads. |
 | **walltime** | The maximum duration a Job is allowed to run before it is stopped. |
 | **I/O (Input/Output)** | The speed of reading from and writing to a storage drive. |
 | **GCD** | Graphics Compute Die. One independent half of an AMD MI250X GPU chip. Each MI250X contains 2 GCDs, each with its own 64 GB of VRAM. Slurm treats each GCD as a separate GPU. |
@@ -83,12 +83,12 @@ A quick reference for all technical terms used in this guide, listed by chapter.
 
 ---
 
-## Chapter 5: AI Software on LUMI
+## Chapter 5: AI software on LUMI
 
 | Term | Definition |
 |:-----|:-----------|
 | **Lustre** | LUMI's high-performance filesystem, optimised for large files but sensitive to many small files. |
-| **pip** | Python's standard package manager — a tool that automatically downloads and installs Python libraries from the internet. |
+| **pip** | Python's standard package manager - a tool that automatically downloads and installs Python libraries from the internet. |
 | **software** | The programs, applications, and scripts that run on the hardware to perform tasks. |
 | **Container** | A single `.sif` file that packages all your software, libraries, and dependencies into one "box." |
 | **Apptainer** | The Container tool used on LUMI. A secure, supercomputer-friendly alternative to Docker. |
@@ -132,9 +132,9 @@ A quick reference for all technical terms used in this guide, listed by chapter.
 
 ---
 
-## Chapter 8: Graduation & Next Steps
+## Chapter 8: Graduation & next steps
 
 | Term | Definition |
 |:-----|:-----------|
-| **MCP** | Model Context Protocol. An open standard that lets AI assistants connect to external tools and data sources — for example, letting your chatbot search the LUMI documentation. |
+| **MCP** | Model Context Protocol. An open standard that lets AI assistants connect to external tools and data sources - for example, letting your chatbot search the LUMI documentation. |
 
