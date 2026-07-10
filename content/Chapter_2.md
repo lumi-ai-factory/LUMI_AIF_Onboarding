@@ -68,10 +68,12 @@ Because LUMI is a pan-European consortium, your account and Public Key are manag
 - **Projects granted via other Consortium countries:** Most other consortium countries manage their access and SSH Keys through the Puhuri portal.
 - **Unsure where to go?** Please refer to the official [Access to LUMI guide](https://docs.lumi-supercomputer.eu/firststeps/accessLUMI/) to find the correct portal for your specific country or organisation.
 
-> [!note] Secure disconnection
-> When you are done with your session, simply type `exit` or press "Ctrl+D" to securely disconnect from LUMI.
+This illustrates what happens if you've successfully logged into LUMI:
 
 ![Logging into LUMI in Terminal](./assets/LUMI_logged_in_terminal.png)
+
+> [!note] Secure disconnection
+> Once you have finished your work and want to exit LUMI (for example, after you complete Chapter 3), type `exit` and hit Enter or just press "Ctrl+D" to securely disconnect.
 
 ### Option B: The web interface (browser-based)
 
