@@ -8,7 +8,9 @@ nav_order: 4
 Think of LUMI not as one giant entity, but as a massive *collection* of computers connected by an incredibly fast network.
 
 > [!info] Deep dive: Why supercomputing?
-> You might wonder why we connect thousands of computers together instead of just building one giant one. To learn about how supercomputers use **parallel processing** to solve massive AI challenges (and how they differ from your laptop), check out the article: [Why supercomputing and LUMI?](https://lumi-ai-factory.eu/articles/blog-why-supercomputing-and-lumi/) **(Optional)**
+> You might wonder why we connect thousands of computers together instead of just building one giant one. To learn about how supercomputers use **parallel processing** to solve massive AI challenges (and how they differ from your laptop), check out the article: 
+>
+> [Why supercomputing and LUMI?](https://lumi-ai-factory.eu/articles/blog-why-supercomputing-and-lumi/) **(Optional)**
 
 
 ## The "two-room" rule: Login vs. compute
@@ -42,7 +44,7 @@ LUMI is divided into several "Partitions%" (sections) depending on what kind of 
 
 > [!info] Other specialised Partitions
 > While this guide focuses on LUMI-C and LUMI-G, the supercomputer also has:
-> - **[LUMI-D (Data Analytics)](https://docs.lumi-supercomputer.eu/hardware/lumid/):** Specialised nodes with massive amounts of memory (up to 4TB per node).
+> - **[LUMI-D (Data Analytics)](https://docs.lumi-supercomputer.eu/hardware/lumid/):** Specialised nodes with massive amounts of memory (up to 4 TB% per node).
 > - **[LUMI-K (Container Cloud)](https://docs.lumi-supercomputer.eu/runjobs/lumi-k/getting-started/lumi_k_what_is/):** A Kubernetes environment for running persistent web services, databases, or APIs instead of standard compute Jobs.
 
 Within each of those hardware Partitions%, the Slurm scheduler further divides resources into smaller **Slurm Partitions** based on Job size and duration.
@@ -82,7 +84,7 @@ When you book a full GPU node on LUMI-G, here is exactly what you get inside tha
 
 ![LUMI-G Hardware](./assets/LUMI_G_Hardware.svg)
 
-#### The "GPU vs. GCD" confusion (important!)
+### The "GPU vs. GCD" confusion (important!)
 This is one of the most important concepts to understand about LUMI's hardware%. 
 
 Each AMD MI250X is physically one large chip, but inside, it is actually split into **two independent halves** called **Graphics Compute Dies (GCDs%)**. Each GCD acts as its own separate GPU with its own 64 GB of dedicated video memory (VRAM).
@@ -114,7 +116,7 @@ On your laptop, everything is usually on one "C: Drive." On LUMI, storage is spl
 > Please remove the files that are no longer needed by your project on a regular basis. If the storage space on LUMI gets too full at some point, automatic cleaning of project scratch and flash might be enabled. In this case information would be sent to LUMI users at least three months in advance. 
 
 > [!note] Flash is fast but expensive
-> Flash is 3x more expensive per TB because it uses faster NVMe drives. Use it only when your Job needs very fast Input and Output (I/O), i.e., the speed of reading from and writing to the drive.
+> Flash is 3x more expensive per TB because it uses faster NVMe% drives. Use it only when your Job needs very fast Input and Output (I/O), i.e., the speed of reading from and writing to the drive.
 
 [More info on LUMI Storage](https://docs.lumi-supercomputer.eu/storage/) **(Optional)**
 

@@ -67,6 +67,7 @@ A quick reference for all technical terms used in this guide, listed by chapter.
 | **hardware** | The physical components of a computer system, such as processors, memory, and storage drives. |
 | **Partition** | A group of nodes with specific hardware and resource limits (e.g., `small-g`, `dev-g`). |
 | **Slurm Partition** | A subdivision within a hardware Partition that sets limits on Job size, duration, and number of concurrent Jobs (e.g., `standard`, `small-g`, `dev-g`). |
+| **TB** | Terabyte. A unit of digital data storage equal to 1,024 Gigabytes (GB). |
 | **`/project`** | Shared project storage (50 GB). Good for files the whole team needs. |
 | **`/scratch`** | High-capacity temporary storage (50 TB). Your main working area for datasets, outputs, and checkpoints. |
 | **`/flash`** | Ultra-fast temporary storage (2 TB). 3x more expensive - use only when your Job needs very fast I/O. |
@@ -74,6 +75,7 @@ A quick reference for all technical terms used in this guide, listed by chapter.
 | **LUMI-G** | The GPU Partition of LUMI - nodes equipped with AMD MI250X GPUs for AI workloads. |
 | **walltime** | The maximum duration a Job is allowed to run before it is stopped. |
 | **I/O (Input/Output)** | The speed of reading from and writing to a storage drive. |
+| **NVMe** | Non-Volatile Memory Express. A type of extremely fast flash storage drive. |
 | **GCD** | Graphics Compute Die. One independent half of an AMD MI250X GPU chip. Each MI250X contains 2 GCDs, each with its own 64 GB of VRAM. Slurm treats each GCD as a separate GPU. |
 | **encryption** | A method of protecting data by converting it into a secret format. Only people with the correct password or key can unlock and read it. |
 | **GDPR** | General Data Protection Regulation. A European Union regulation concerning data protection and privacy in the EU and the EEA. |

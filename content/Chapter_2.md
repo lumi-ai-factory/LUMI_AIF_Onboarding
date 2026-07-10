@@ -21,19 +21,22 @@ Think of an SSH Key Pair% like a physical lock and its matching key, but digital
 
 
 ## Step 1: Generating your keys
-Before you can log in, you need to create this "Key and Lock" pair on your own computer. This process is quick and usually involves typing one command into your computer's Terminal%.
+Before you can log in, you need to create this "Key and Lock" pair on your own computer. This process is quick and usually involves typing one command into your computer's Terminal% (Windows users need to open "Windows PowerShell").
 
-The exact command and steps vary slightly depending on whether you are using Windows, macOS, or Linux:
+Before you generate your keys and follow the official guide, please read these important rules and details:
+- **Unique keys:** You will be using the `ed25519` encryption algorithm. Both your Public and Private keys are completely unique to you. The file name is usually just `ed25519`, but the actual content of the files is unique to you.
+- **File extensions:** The Public Key file name always ends in `.pub`, but the Private Key file name has no extension at all. You will need to know this when providing paths later.
+- **Finding the paths:** The exact path where your keys are saved will be written on the screen during generation. There is no need to actually open and look inside either of these files.
+- **Strong passphrase:** When the guide asks you for a "passphrase%," choose something you can remember. This adds a second layer of security: even if someone stole your laptop, they couldn't use your Key without that phrase.
+- **The silent passphrase:** When you are asked for your passphrase in the Terminal, you won't see any characters appear as you type (not even stars). This is a normal security feature so that people who see your screen can't know even the number of characters in your passphrase. Just type your phrase and hit Enter!
+- **Multiple devices:** If you use multiple computers (e.g., a laptop and a desktop), generate a new, separate Key Pair on each device. Uploading multiple Public Keys to the LUMI portal simply gives each device its own independent access - any of them will log you into the exact same LUMI account.
+- **Placeholder values:** In this guide, `<angle brackets>` indicate a placeholder - replace the entire thing, **brackets included**, with your own value. Make sure to remove the `< >` brackets! For example, `<your_lumi_username>` becomes `smithmar`.
+
+The exact command and steps vary slightly depending on whether you are using Windows, macOS, or Linux. Make sure to select the "From a terminal (all OS)" tab in the guide below, even if you are on Windows.
 
 [Follow the Official guide to create and upload your SSH Keys](https://docs.lumi-supercomputer.eu/firststeps/SSH-keys/)
 
-> [!note] Choose a strong passphrase
-> When the guide asks you for a "passphrase%," choose something you can remember. This adds a second layer of security: even if someone stole your laptop, they couldn't use your Key without that phrase.
-
-> [!tip] Using multiple devices
-> If you use multiple computers (e.g., a laptop and a desktop), generate a new, separate Key Pair on each device. Uploading multiple Public Keys to the LUMI portal simply gives each device its own independent access - any of them will log you into the exact same LUMI account.
-
-Make sure that you have uploaded your Public Key to the correct portal as described in the guide before you proceed.
+Make sure that you have uploaded your Public Key to the correct portal as described in the guide before you proceed. Once uploaded, keep in mind that it might take a few hours for your public key to be registered on LUMI. Until then, attempting to log in might result in a `Permission denied (publickey)` error.
 
 
 ## Step 2: Logging into LUMI
@@ -45,12 +48,9 @@ This is how AI developers typically work. You open your Terminal and type a comm
 
 [How to Log In via Terminal for the first time (SSH Client)](https://docs.lumi-supercomputer.eu/firststeps/loggingin/)
 
-When you type the command to log in and hit enter, it will look something like this:
+To connect to LUMI, type the following command into your Terminal and hit enter:
 > [!command]
-> ssh <your_lumi_username>@lumi.csc.fi
-
-> [!note] Placeholder values
-> In this guide, `<angle brackets>` indicate a placeholder - replace the entire thing, brackets included, with your own value. For example, `<your_lumi_username>` becomes `smithmar`.
+> ssh -i <path_to_your_private_key> <your_lumi_username>@lumi.csc.fi
 
 If you prefer to copy and paste commands from this guide rather than typing them out, keep in mind that standard pasting shortcuts might not work in your Terminal:
 - **Windows / Linux:** Try **Ctrl+Shift+V** (or right-clicking) instead of the usual Ctrl+V.
@@ -67,10 +67,6 @@ Because LUMI is a pan-European consortium, your account and Public Key are manag
 - **Projects granted via EuroHPC:** You manage your access through the EuroHPC Federation Platform (EFP). You can find detailed instructions for uploading your SSH Key in the [EuroHPC AAI documentation](https://docs.my-eurohpc.eu/aai/aai/).
 - **Projects granted via other Consortium countries:** Most other consortium countries manage their access and SSH Keys through the Puhuri portal.
 - **Unsure where to go?** Please refer to the official [Access to LUMI guide](https://docs.lumi-supercomputer.eu/firststeps/accessLUMI/) to find the correct portal for your specific country or organisation.
-
-**The silent passphrase**
-
-When you are asked for your passphrase, you won't see any characters appear as you type (not even stars). This is a security feature. Just type your phrase and hit Enter!
 
 > [!note] Secure disconnection
 > When you are done with your session, simply type `exit` or press "Ctrl+D" to securely disconnect from LUMI.
