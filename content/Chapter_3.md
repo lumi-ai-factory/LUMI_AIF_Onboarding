@@ -34,6 +34,11 @@ If you are more of a visual learner or if this is your first time learning about
 
 
 ## Practice
+
+If you prefer a visual guide, you can watch this video walkthrough of the practice steps:
+
+<iframe id="kmsembed-0_9g045f1b" width="400" height="285" src="https://video.csc.fi/embed/secure/iframe/entryId/0_9g045f1b/uiConfId/14971191/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="LUMI AIF Onboarding - Chapter 3 - Practice"></iframe>
+
 The best way to learn after having studied some theory is to **practise**. Log in to LUMI (see Chapter 2) and let's apply what you've learned in the guides in our Command Line Terminal on LUMI. Follow these step-by-step instructions:
 
 > [!tip] Build muscle memory
