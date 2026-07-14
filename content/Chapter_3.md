@@ -139,7 +139,13 @@ The best way to learn after having studied some theory is to **practise**. Log i
     > [!warning] Gone for good!
     > After this command, there is no way to recover the removed image as there are no backups on LUMI. Make sure to make a backup of your data to avoid accidents with `rm`. 
 
-11. **Disconnect**. Great job! You can now disconnect from LUMI by pressing **Ctrl+D**. You will notice the Command Line prompt change back to your local computer's format (such as `username@your_computer` on Mac/Linux, or `C:\Users\Name` on Windows). This confirms you are safely back on **your machine**.
+11. **Clear the screen**. If your Terminal is getting cluttered, you can clear all previous output to get a fresh screen. This just moves previous commands and outputs out of view (but doesn't remove or reverse anything):
+
+    ```bash
+    clear
+    ```
+
+12. **Disconnect**. Great job! You can now disconnect from LUMI by pressing **Ctrl+D**. You will notice the Command Line prompt change back to your local computer's format (such as `username@your_computer` on Mac/Linux, or `C:\Users\Name` on Windows). This confirms you are safely back on **your machine**.
 
 You can learn more about Linux Command Line on the [Linux basics tutorial for CSC](https://docs.csc.fi/support/tutorials/env-guide/) page. **(Optional)**
 
@@ -157,6 +163,7 @@ You can learn more about Linux Command Line on the [Linux basics tutorial for CS
 | `cp <old> <new>` | **C**o**p**y | Copy a file to a new location (or/and under a new name). |
 | `mv <old> <new>` | **M**o**v**e / Rename | Move a file or change its name. |
 | `rm <file>` | **r**e**m**ove | Irreversibly delete a file |
+| `clear` | Clear | Clear the terminal screen (moves output out of view). |
 | `TAB` | **Autocomplete** | Type a few letters and hit Tab to finish the name. |
 | `Ctrl + S` | Save | Save changes in the `nano` editor. |
 | `Ctrl + X` | Exit | Close the `nano` editor. |
