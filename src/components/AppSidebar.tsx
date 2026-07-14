@@ -27,7 +27,9 @@ function slugToHref(slug: string) {
 export function AppSidebar() {
   const tree = React.useMemo(() => buildNavTree(), []);
   const pathname = useRouterState({
-    select: (s) => s.location.pathname,
+    // Strip the trailing slash (trailingSlash: "always") so comparisons
+    // against slug-derived hrefs like "/Chapter_2" keep matching.
+    select: (s) => s.location.pathname.replace(/\/+$/, "") || "/",
   });
 
   return (
