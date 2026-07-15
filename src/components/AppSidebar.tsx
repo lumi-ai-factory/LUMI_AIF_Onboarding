@@ -9,6 +9,7 @@ import {
   SidebarGroupContent,
   SidebarHeader,
   SidebarMenu,
+  SidebarMenuAction,
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarMenuSub,
@@ -81,18 +82,47 @@ function isActiveTree(node: NavNode, pathname: string): boolean {
   return node.children.some((c) => isActiveTree(c, pathname));
 }
 
+/**
+ * Branch open state: collapsed by default, opened automatically whenever a
+ * navigation lands inside the branch (sidebar click, in-content link,
+ * prev/next), while still letting the reader collapse it by hand.
+ */
+function useBranchOpen(branchActive: boolean, pathname: string) {
+  const [open, setOpen] = React.useState(branchActive);
+  React.useEffect(() => {
+    if (branchActive) setOpen(true);
+  }, [branchActive, pathname]);
+  return [open, setOpen] as const;
+}
+
+const wrapTitle =
+  "h-auto min-h-8 py-1.5 [&>span:last-child]:whitespace-normal [&>span:last-child]:truncate-none";
+
+/** Chevron that toggles a branch without navigating — the row's title is the
+ * link to the parent page itself, so expand/collapse gets its own button. */
+function BranchToggle({ open }: { open: boolean }) {
+  return (
+    <CollapsibleTrigger asChild>
+      <SidebarMenuAction
+        className="data-[state=open]:rotate-90"
+        aria-label={open ? "Collapse section" : "Expand section"}
+      >
+        <ChevronRight />
+      </SidebarMenuAction>
+    </CollapsibleTrigger>
+  );
+}
+
 function NavItem({ node, pathname }: { node: NavNode; pathname: string }) {
   const href = slugToHref(node.page.slug);
   const active = pathname === href;
+  const branchActive = isActiveTree(node, pathname);
+  const [open, setOpen] = useBranchOpen(branchActive, pathname);
 
   if (node.children.length === 0) {
     return (
       <SidebarMenuItem>
-        <SidebarMenuButton
-          asChild
-          isActive={active}
-          className="h-auto min-h-8 py-1.5 [&>span:last-child]:whitespace-normal [&>span:last-child]:truncate-none"
-        >
+        <SidebarMenuButton asChild isActive={active} className={wrapTitle}>
           <Link to={href}>
             <span className="whitespace-normal leading-snug">{node.page.frontmatter.title}</span>
           </Link>
@@ -101,37 +131,64 @@ function NavItem({ node, pathname }: { node: NavNode; pathname: string }) {
     );
   }
 
-  const branchActive = isActiveTree(node, pathname);
-
   return (
-    <Collapsible defaultOpen={branchActive} className="group/collapsible">
+    <Collapsible open={open} onOpenChange={setOpen}>
       <SidebarMenuItem>
-        <CollapsibleTrigger asChild>
-          <SidebarMenuButton isActive={active}>
-            <ChevronRight className="h-4 w-4 transition-transform group-data-[state=open]/collapsible:rotate-90" />
-            <span>{node.page.frontmatter.title}</span>
-          </SidebarMenuButton>
-        </CollapsibleTrigger>
+        <SidebarMenuButton asChild isActive={active} className={`${wrapTitle} pr-8`}>
+          <Link to={href}>
+            <span className="whitespace-normal leading-snug">{node.page.frontmatter.title}</span>
+          </Link>
+        </SidebarMenuButton>
+        <BranchToggle open={open} />
         <CollapsibleContent>
-          <SidebarMenuSub>
-            <SidebarMenuSubItem>
-              <SidebarMenuSubButton asChild isActive={active}>
-                <Link to={href}>Overview</Link>
-              </SidebarMenuSubButton>
-            </SidebarMenuSubItem>
-            {node.children.map((child) => {
-              const childHref = slugToHref(child.page.slug);
-              return (
-                <SidebarMenuSubItem key={child.page.slug}>
-                  <SidebarMenuSubButton asChild isActive={pathname === childHref}>
-                    <Link to={childHref}>{child.page.frontmatter.title}</Link>
-                  </SidebarMenuSubButton>
-                </SidebarMenuSubItem>
-              );
-            })}
-          </SidebarMenuSub>
+          <NavSubTree node={node} pathname={pathname} />
         </CollapsibleContent>
       </SidebarMenuItem>
+    </Collapsible>
+  );
+}
+
+function NavSubTree({ node, pathname }: { node: NavNode; pathname: string }) {
+  return (
+    <SidebarMenuSub>
+      {node.children.map((child) => (
+        <NavSubItem key={child.page.slug} node={child} pathname={pathname} />
+      ))}
+    </SidebarMenuSub>
+  );
+}
+
+function NavSubItem({ node, pathname }: { node: NavNode; pathname: string }) {
+  const href = slugToHref(node.page.slug);
+  const active = pathname === href;
+  const branchActive = isActiveTree(node, pathname);
+  const [open, setOpen] = useBranchOpen(branchActive, pathname);
+
+  if (node.children.length === 0) {
+    return (
+      <SidebarMenuSubItem>
+        <SidebarMenuSubButton asChild isActive={active} className={wrapTitle}>
+          <Link to={href}>
+            <span className="whitespace-normal leading-snug">{node.page.frontmatter.title}</span>
+          </Link>
+        </SidebarMenuSubButton>
+      </SidebarMenuSubItem>
+    );
+  }
+
+  return (
+    <Collapsible open={open} onOpenChange={setOpen}>
+      <SidebarMenuSubItem className="relative">
+        <SidebarMenuSubButton asChild isActive={active} className={`${wrapTitle} pr-8`}>
+          <Link to={href}>
+            <span className="whitespace-normal leading-snug">{node.page.frontmatter.title}</span>
+          </Link>
+        </SidebarMenuSubButton>
+        <BranchToggle open={open} />
+        <CollapsibleContent>
+          <NavSubTree node={node} pathname={pathname} />
+        </CollapsibleContent>
+      </SidebarMenuSubItem>
     </Collapsible>
   );
 }
