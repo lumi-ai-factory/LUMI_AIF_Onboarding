@@ -30,14 +30,11 @@ A typical end-to-end journey for developing AI on LUMI follows a straightforward
 
 The official LUMI documentation is excellent, but it can be a bit "sink or swim" for those who aren't used to High-Performance Computing (HPC) and the Command Line. In this guide, we translate complex HPC jargon into plain English and take you on a step-by-step journey from your first login to running your first AI model.
 
-Upon completion of this guide, you will:
-- **Understand secure access:** Set up SSH Keys to connect to LUMI safely (Chapter 2).
-- **Master Command Line "survival skills":** Navigate the system and manage files without a mouse (Chapter 3).
-- **Navigate hardware & storage tiers:** Understand CPU/GPU Partitions and where your datasets live (Chapter 4).
-- **Manage AI environments:** Use Containers for reproducible software setups (Chapter 5).
-- **Retrieve ready-to-use code:** Download and update pre-written code and examples directly on the supercomputer (Chapter 6).
-- **Order compute power:** Schedule resources and run AI Jobs using Slurm (Chapter 7).
-- **Be prepared to scale:** Know where to find help, access example scripts, and easily transition to the advanced [LUMI AI Guide](https://github.com/Lumi-supercomputer/LUMI-AI-Guide) (Chapter 8).
+By the time you finish this guide, you will be able to:
+- **Command a supercomputer:** Use text-based commands to navigate and control one of the world's most powerful machines.
+- **Run massive AI workloads:** Train and fine-tune models that would instantly crash on a regular computer.
+- **Tap into thousands of GPUs:** Request massive amounts of compute power to scale your startup or research.
+- **Confidently take the next steps:** You will be equipped to run real-world AI examples and tackle the advanced [LUMI AI Guide](https://github.com/Lumi-supercomputer/LUMI-AI-Guide).
 
 At the end of each chapter, you will find **a quiz** to check your understanding before moving on.
 
