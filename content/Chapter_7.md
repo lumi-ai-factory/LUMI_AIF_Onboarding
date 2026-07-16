@@ -166,7 +166,7 @@ If your Job is running, you will see `R` under the `ST` (State) column. If it is
 
 
 ### Step 3: Check the live output
-Unlike your laptop where text prints directly to your screen, Slurm captures everything your Python script "prints" and saves it to a log file in the same directory. This log file will be named `slurm-<your_job_id>.out` (e.g., `slurm-1234567.out`).
+Unlike your laptop where text prints directly to your screen, Slurm captures everything your Python script "prints" and saves it to a log% file in the same directory. This log file will be named `slurm-<your_job_id>.out` (e.g., `slurm-1234567.out`).
 
 To watch the model weights load in real-time, you can "follow" the log file:
 ```bash

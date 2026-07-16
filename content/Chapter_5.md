@@ -13,7 +13,7 @@ When you download an AI project from the internet, the instructions usually say:
 ## Why `pip install` is the "forbidden command"
 LUMI uses a specialised high-performance storage system called **Lustre%**. Lustre is designed for "Big Data" - it is incredibly good at reading and writing massive files (like gigabytes of model weights or terabytes of text) at lightning speeds. However, Lustre has a weakness: **many small files**.
 
-A typical `pip install` of a library like PyTorch% creates tens of thousands of tiny files. If everyone ran it, the filesystem would struggle to keep track of millions of tiny files, slowing down the entire supercomputer for everyone.
+A typical `pip install` of a library% like PyTorch% creates tens of thousands of tiny files. If everyone ran it, the filesystem would struggle to keep track of millions of tiny files, slowing down the entire supercomputer for everyone.
 
 ## The solution: Containers
 To avoid the "Million File" problem, we use Containers. On LUMI, our Container tool of choice is called 'Singularity' (nowadays also known under its new name, 'Apptainer').
@@ -32,36 +32,39 @@ On LUMI, this "box" is a single file (usually ending in `.sif`).
 
 
 ## How to get your AI software
-You don't necessarily need to learn how to build these Containers from scratch. The LUMI AI Factory provides them for you. Most of the example scripts and guides already contain code necessary to use a Container and you don't need to do anything. 
+You don't necessarily need to learn how to build these Containers from scratch. The LUMI AI Factory provides them for you at `/appl/local/laifs/containers/`. Most of example scripts and guides already contain code necessary to use a Container and you don't need to choose one yourself.
 
-1) If you have the `.sif` file already on the system you can enter the Container with an interactive Shell. All the commands you execute in the Container's Shell will be executed using all the dependencies/libraries that are present in the Container:
+Below are the three main ways to interact with a Container. If you would like to test the first two options out right now, you can replace `<container.sif>` in the examples below with our default AI container: `/appl/local/laifs/containers/lumi-multitorch-latest.sif`. 
 
-    ``` bash
+1) **Interactive Shell:** You can "enter" the Container to get a live Command Line inside it. All commands you type here will be executed from "inside" the Container and will use the libraries packed inside it:
+
+    ```bash
     singularity shell <container.sif>
     ``` 
 
-    Once you "enter" a Container, you will see that the Command Line has changed. You can check what is inside just like you would on your own computer:
+    Once you "enter" a Container, you will see that the Command Line has changed. You can check what libraries are included in the Container by running `pip list`%:
 
     ```bash
     pip list
     ```
+    *(Type `exit` or press **Ctrl+D** to leave the container when you are done).*
 
-2) The second way is to execute a command in the Container with `singularity exec`, which enters the Container, executes the command and immediately exits the Container.
+2) **Execute a single command:** The second way is to execute a command in the Container is with `singularity exec`, which enters the Container, executes the command and immediately exits the Container. For example, to list the libraries without staying inside:
 
     ```bash
     singularity exec <container.sif> pip list
     ```
 
-3) The third option is often called running a Container, which is done with `singularity run`:
+3) **Run a script:** The most common way you will use Containers in your actual Jobs% is by "running" them. You don't need to test this command right now, but you will use it later.
 
     ```bash
-    singularity run <container.sif>
+    singularity run <container.sif> python my_script.py
     ```
 
-    It does require the Container to have a built-in "Runscript" - a set of default instructions baked in by whoever created the Container. 
+    This relies on the Container having a built-in "Runscript" - a default set of instructions baked in by the creator of the Container. You can optionally add commands at the end (like `python my_script.py`) to tell the Container exactly what script to execute.
     
     > [!tip] Use `singularity run`
-    > The LUMI AI Factory Containers come with this already set up, so `singularity run` is the recommended way to use them. If you ever get an error saying no Runscript is defined, fall back to `singularity exec` instead.
+    > The LUMI AI Factory Containers come with Runscripts already set up, so `singularity run` is the recommended way to use them in your Slurm scripts. If you ever get an error saying no Runscript is defined, fall back to `singularity exec` instead.
 
 [Read more about Containers and interacting with them.](https://lumi-supercomputer.github.io/LUMI-training-materials/2day-20240502/09_Containers/#interacting-with-containers) **(Optional)**
 

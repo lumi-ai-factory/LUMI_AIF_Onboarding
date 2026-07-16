@@ -149,6 +149,9 @@ The best way to learn after having studied some theory is to **practise**. Log i
 
 You can learn more about Linux Command Line on the [Linux basics tutorial for CSC](https://docs.csc.fi/support/tutorials/env-guide/) page. **(Optional)**
 
+> [!note] Feeling overwhelmed?
+> If this feels like a lot to take in, that's because it is! It's completely normal to feel overwhelmed by this guide as a whole. You don't have to memorise any of it - you can always refer back to these chapters when you need them.
+
 ## Your Command Line cheatsheet
 
 | Command / Key | Action | Quick Note |

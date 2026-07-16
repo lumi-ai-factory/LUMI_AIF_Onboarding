@@ -36,7 +36,7 @@ The exact command and steps vary slightly depending on whether you are using Win
 
 [Follow the Official guide to create and upload your SSH Keys](https://docs.lumi-supercomputer.eu/firststeps/SSH-keys/)
 
-Make sure that you have uploaded your Public Key to the correct portal as described in the guide before you proceed. Once uploaded, keep in mind that it might take a few hours for your public key to be registered on LUMI. Until then, attempting to log in might result in a `Permission denied (publickey)` error.
+Make sure that you have uploaded your Public Key to the correct portal as described in the guide before you proceed. Once uploaded, keep in mind that it might take a few hours for your public key to be registered on LUMI. Until then, attempting to log in might result in a `Permission denied (Public Key)` error.
 
 
 ## Step 2: Logging into LUMI

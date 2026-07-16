@@ -58,7 +58,7 @@ A quick reference for all technical terms used in this guide, listed by chapter.
 
 | Term | Definition |
 |:-----|:-----------|
-| **node** | An individual computer within the LUMI supercomputer. |
+| **Node** | An individual computer within the LUMI supercomputer. |
 | **Login Node** | A shared "lobby" node where you manage files and submit Jobs. Not for heavy computation. Named `uan01`, `uan02`, etc. |
 | **Compute Node** | A powerful node reserved exclusively for running your Jobs. Named like `nid007628`. |
 | **Job** | Any task you ask the supercomputer to run - a script that trains a model, processes data, or runs a simulation. |
@@ -92,6 +92,7 @@ A quick reference for all technical terms used in this guide, listed by chapter.
 |:-----|:-----------|
 | **Lustre** | LUMI's high-performance filesystem, optimised for large files but sensitive to many small files. |
 | **pip** | Python's standard package manager - a tool that automatically downloads and installs Python libraries from the internet. |
+| **library** | A collection of pre-written code that you can plug into your own programs to perform common tasks (e.g., PyTorch for AI calculations). |
 | **software** | The programs, applications, and scripts that run on the hardware to perform tasks. |
 | **Container** | A single `.sif` file that packages all your software, libraries, and dependencies into one "box." |
 | **Apptainer** | The Container tool used on LUMI. A secure, supercomputer-friendly alternative to Docker. |
@@ -134,6 +135,7 @@ A quick reference for all technical terms used in this guide, listed by chapter.
 | **CPU-hours** | One of the two currencies of Billing Units on LUMI. Used for compute time on the LUMI-C CPU Partition. |
 | **Environment Variable** | A background setting you define before running a program, which tells the program how it should behave (such as telling it which AI model to load or where to save files). |
 | **vLLM** | A fast software engine used to run LLMs efficiently. It is the recommended way to use large language models on LUMI. |
+| **log** | A text file that automatically records the output, progress, and errors of your programs as they run. Slurm saves these as `.out` files. |
 
 ---
 

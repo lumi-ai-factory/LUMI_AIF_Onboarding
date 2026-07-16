@@ -11,6 +11,21 @@ The LUMI AI Factory is designed to bridge the gap between supercomputers and the
 > [!warning] We would love to hear your feedback!
 > These materials are in active development. If you have suggestions, encounter difficulties, or want to share your experience, please fill out our [short feedback form](https://link.webropolsurveys.com/S/574AE9D8B276E808). It only takes a few minutes and helps us improve the guide for everyone.
 
+## The LUMI workflow
+
+A typical end-to-end journey for developing AI on LUMI follows a straightforward path. Here is a high-level overview of the steps you will take:
+
+1. **Get access** (Chapters 1 & 2)
+   Obtain your project resources and securely connect to LUMI using SSH Keys%.
+2. **Transfer data and code** (Chapters 3, 4 & 6)
+   Upload your datasets to the high-performance storage and download your code from GitHub using the Command Line%.
+3. **Prepare environments** (Chapter 5)
+   Load pre-configured software using modules% and containers%.
+4. **Train, fine-tune, or run inference** (Chapter 7)
+   Request resources using Slurm% and execute your jobs% on the Compute Nodes%.
+5. **Check results and continue development** (Chapters 7 & 8)
+   Monitor your running jobs, review the output logs%, and adjust your code as needed.
+
 ## About this guide & what to expect
 
 The official LUMI documentation is excellent, but it can be a bit "sink or swim" for those who aren't used to High-Performance Computing (HPC) and the Command Line. In this guide, we translate complex HPC jargon into plain English and take you on a step-by-step journey from your first login to running your first AI model.
@@ -27,6 +42,14 @@ Upon completion of this guide, you will:
 At the end of each chapter, you will find **a quiz** to check your understanding before moving on.
 
 ![LUMI](./assets/LUMI_supercomputer.jpg)
+
+## Time commitment
+
+If you are completely new to the command line and supercomputing, expect to spend **8 or more hours** to complete this onboarding. 
+
+While the guides are step-by-step and beginner-friendly, transitioning from a personal laptop to a supercomputer is a big jump. There is a lot of new ground to cover.
+
+To avoid cognitive overload, **we highly recommend splitting this onboarding across at least 2 days.** Take your time, read carefully, and allow yourself to take breaks during the practical exercises. Learning to navigate a supercomputer is a marathon, not a sprint.
 
 ## AI vs. LLMs
 Before we dive into the supercomputer%, let's clarify an important distinction. The terms "AI" and "LLM" are often used interchangeably in the media, but they are not the same thing:
