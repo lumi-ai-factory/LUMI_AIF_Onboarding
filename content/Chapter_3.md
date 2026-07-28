@@ -13,6 +13,7 @@ In the previous chapter, you've logged in to LUMI. If you were successful, you s
 
 **Welcome to the Command Line Interface (CLI).** The underlying program that actually reads and executes your commands here is known as the **Shell%**.
 
+![Terminal, SHH, Shell](../public/assets/terminal_ssh_shell.png)
 
 ## Navigation without a mouse
 When you use Windows or macOS, you see folders and icons. You double-click a folder to see what’s inside.
