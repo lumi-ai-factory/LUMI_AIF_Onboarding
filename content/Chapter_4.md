@@ -7,10 +7,15 @@ nav_order: 4
 
 Think of LUMI not as one giant entity, but as a massive *collection* of computers connected by an incredibly fast network.
 
+<details>
+<summary>Deep dive: Why supercomputing? (Optional)</summary>
+
 > [!info] Deep dive: Why supercomputing?
 > You might wonder why we connect thousands of computers together instead of just building one giant one. To learn about how supercomputers use **parallel processing** to solve massive AI challenges (and how they differ from your laptop), check out the article: 
 >
 > [Why supercomputing and LUMI?](https://lumi-ai-factory.eu/articles/blog-why-supercomputing-and-lumi/) **(Optional)**
+
+</details>
 
 
 ## The "two-room" rule: Login vs. compute

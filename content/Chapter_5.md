@@ -86,7 +86,9 @@ module load lumi-aif-singularity-bindings
 > Guides and example scripts will instruct you what Modules to use. 
 
 
-## Using a different container (Advanced)
+<details>
+<summary>## Using a different container (Advanced)</summary>
+
 However, if a guide or script recommends an outdated Container, or if a Container doesn't have the specific version of a library your project needs, you can find the full list of Containers created and maintained by LUMI AI Factory at `/appl/local/laifs/containers/`. If you don't know which Container to choose, use the latest one with the highest number of libraries, conveniently named `lumi-multitorch-latest.sif`.
 
 ![List of LAIFs containers](./assets/LAIFS_containers.png)
@@ -95,12 +97,18 @@ Besides `lumi-multitorch-latest.sif` you can see directories. The name of the di
 
 [Read about the other types of Containers that contain fewer libraries here](https://docs.lumi-supercomputer.eu/laif/software/ai-environment/). **(Optional)**
 
-## What if I am missing a library? (Advanced)
+</details>
+
+<details>
+<summary>## What if I am missing a library? (Advanced)</summary>
+
 If you find a Container that is almost perfect but is missing one specific library, you can use a Python Virtual Environment% (`venv`). You create this environment on top of the Container. It stores the extra bits you need in a folder, allowing you to customise your workspace without creating millions of files. If you're sure this is the route you want to take, read this guide:
 
 [Guide on Python Virtual Environment](https://www.w3schools.com/python/python_virtualenv.asp) **(Optional - only if you need a `venv`)**
 
 [Or watch this video on creating and using `venv` from within a Container.](https://lumi-supercomputer.github.io/LUMI-training-materials/ai-20240529/extra_07_VirtualEnvironments/) **(Optional)**
+
+</details>
 
 
 ## Summary checklist
