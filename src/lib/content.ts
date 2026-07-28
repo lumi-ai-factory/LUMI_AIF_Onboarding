@@ -17,6 +17,42 @@ function parseFrontmatter(raw: string): { data: Record<string, unknown>; content
   return { data, content: text.slice(match[0].length) };
 }
 
+/**
+ * Let authors size a collapsible title with normal markdown:
+ *   <summary>### Exercise 1</summary>
+ *
+ * Markdown is not parsed inside a raw HTML line, so the heading is lifted onto
+ * a block of its own (the blank lines end and restart the surrounding HTML
+ * block, and rehype-raw stitches the pieces back together). It then behaves
+ * like every other heading: real heading size, a slug id, a copy-link icon,
+ * and an entry in the table of contents. Lines inside fenced code blocks are
+ * left alone, so documenting the syntax in a code fence still shows it as
+ * written.
+ */
+function expandSummaryHeadings(body: string): string {
+  if (!body.includes("<summary")) return body;
+  const out: string[] = [];
+  let fence = "";
+  for (const line of body.split("\n")) {
+    const marker = line.match(/^\s*(`{3,}|~{3,})/);
+    if (marker) {
+      if (!fence) fence = marker[1];
+      else if (marker[1][0] === fence[0] && marker[1].length >= fence.length) fence = "";
+      out.push(line);
+      continue;
+    }
+    if (fence) {
+      out.push(line);
+      continue;
+    }
+    const m = line.match(
+      /^([ \t]*)(<summary(?:\s[^>]*)?>)[ \t]*(#{1,6}[ \t]+.+?)[ \t]*(<\/summary>[ \t]*)$/i,
+    );
+    out.push(m ? `${m[1]}${m[2]}\n\n${m[1]}${m[3]}\n\n${m[1]}${m[4]}` : line);
+  }
+  return out.join("\n");
+}
+
 export interface PageFrontmatter {
   title: string;
   nav_order?: number;
@@ -58,13 +94,100 @@ export const pages: Page[] = Object.entries(rawModules)
       slug: fileToSlug(filePath),
       path: filePath.replace(/^\//, ""),
       frontmatter: parsed.data as unknown as PageFrontmatter,
-      body: parsed.content,
+      body: expandSummaryHeadings(parsed.content),
     };
   })
   .sort((a, b) => (a.frontmatter.nav_order ?? 999) - (b.frontmatter.nav_order ?? 999));
 
+/**
+ * Warn about front-matter mistakes that the nav would otherwise swallow
+ * silently: pages are linked to their parent by exact title, so a typo in
+ * `parent` or a duplicated title rearranges the sidebar with no error. Runs
+ * once on load, so warnings show up in the browser console during
+ * `bun run dev` and in the CI build log when the site is prerendered.
+ */
+function warnAboutContentMistakes(all: Page[]) {
+  const byTitle = new Map<string, Page>();
+  for (const page of all) {
+    const title = page.frontmatter.title;
+    if (!title) {
+      console.warn(`[content] ${page.path}: missing "title" in front matter.`);
+      continue;
+    }
+    const other = byTitle.get(title);
+    if (other) {
+      console.warn(
+        `[content] ${page.path} and ${other.path} share the title "${title}". Titles must be unique: they are how "parent" fields and breadcrumbs identify pages.`,
+      );
+    } else {
+      byTitle.set(title, page);
+    }
+  }
+  for (const page of all) {
+    const parent = page.frontmatter.parent;
+    if (!parent) continue;
+    if (parent === page.frontmatter.title) {
+      console.warn(
+        `[content] ${page.path}: "parent" points at the page itself and is ignored.`,
+      );
+    } else if (!byTitle.has(parent)) {
+      console.warn(
+        `[content] ${page.path}: parent "${parent}" does not match any page title, so the page shows at the top level of the sidebar. Check it against the target page's "title".`,
+      );
+    }
+  }
+}
+
+warnAboutContentMistakes(pages);
+
 export function findPage(slug: string): Page | undefined {
   return pages.find((p) => p.slug === slug);
+}
+
+/**
+ * Strip the inline markdown that would otherwise leak into plain text taken
+ * from a body: images, links, inline code, emphasis, and glossary markers.
+ * Used for meta descriptions and for the derived site title.
+ */
+function stripInlineMarkdown(text: string): string {
+  return text
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, "") // images
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, "$1") // links -> text
+    .replace(/`([^`]*)`/g, "$1") // inline code
+    .replace(/\*\*([^*]+)\*\*/g, "$1")
+    .replace(/\*([^*]+)\*/g, "$1")
+    .replace(/__([^_]+)__/g, "$1")
+    .replace(/_([^_]+)_/g, "$1")
+    // Glossary markers: a "%" directly after a letter ends a `Term%` marker.
+    // Percentages ("40%") follow digits, so they survive. `\%` escapes to "%".
+    .replace(/(?<=\p{L})%/gu, "")
+    .replace(/\\%/g, "%")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+/**
+ * First heading of a markdown body as plain text, or "" when there is none.
+ * Headings inside fenced code blocks are skipped, so documenting markdown in a
+ * code fence never wins. This is how the site gets its name: the `#` heading at
+ * the top of `content/index.md` is the site title, so an author renames their
+ * whole site by editing one heading they were writing anyway.
+ */
+export function firstHeading(body: string): string {
+  let fence = "";
+  for (const raw of body.split(/\r?\n/)) {
+    const line = raw.trim();
+    const marker = line.match(/^(`{3,}|~{3,})/);
+    if (marker) {
+      if (!fence) fence = marker[1];
+      else if (marker[1][0] === fence[0] && marker[1].length >= fence.length) fence = "";
+      continue;
+    }
+    if (fence) continue;
+    const heading = line.match(/^#{1,6}[ \t]+(.+?)[ \t]*#*$/);
+    if (heading) return stripInlineMarkdown(heading[1]);
+  }
+  return "";
 }
 
 /**
@@ -109,19 +232,7 @@ export function getPageDescription(page: Page, maxLen = 155): string {
     paragraph.push(line);
   }
 
-  let text = paragraph.join(" ");
-  // Strip the most common inline markdown so the description reads cleanly.
-  text = text
-    .replace(/!\[[^\]]*\]\([^)]*\)/g, "") // images
-    .replace(/\[([^\]]+)\]\([^)]*\)/g, "$1") // links -> text
-    .replace(/`([^`]*)`/g, "$1") // inline code
-    .replace(/\*\*([^*]+)\*\*/g, "$1")
-    .replace(/\*([^*]+)\*/g, "$1")
-    .replace(/__([^_]+)__/g, "$1")
-    .replace(/_([^_]+)_/g, "$1")
-    .replace(/%/g, "") // glossary markers
-    .replace(/\s+/g, " ")
-    .trim();
+  const text = stripInlineMarkdown(paragraph.join(" "));
 
   if (!text) return "";
   if (text.length <= maxLen) return text;
@@ -196,9 +307,23 @@ export function buildNavTree(): NavNode[] {
     byTitle.set(page.frontmatter.title, node);
   }
 
+  // True when linking `node` under `parentTitle` would make the node its own
+  // ancestor (self-parent or a longer `parent` loop) — that node becomes a
+  // root instead, since a cycle would recurse forever when the tree is walked.
+  const wouldCycle = (node: NavNode, parentTitle: string): boolean => {
+    const seen = new Set<string>();
+    let title: string | undefined = parentTitle;
+    while (title !== undefined && !seen.has(title)) {
+      if (title === node.page.frontmatter.title) return true;
+      seen.add(title);
+      title = byTitle.get(title)?.page.frontmatter.parent;
+    }
+    return false;
+  };
+
   for (const node of byTitle.values()) {
     const parentTitle = node.page.frontmatter.parent;
-    if (parentTitle && byTitle.has(parentTitle)) {
+    if (parentTitle && byTitle.has(parentTitle) && !wouldCycle(node, parentTitle)) {
       byTitle.get(parentTitle)!.children.push(node);
     } else {
       roots.push(node);
