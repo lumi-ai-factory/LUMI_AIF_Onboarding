@@ -10,10 +10,8 @@ Think of LUMI not as one giant entity, but as a massive *collection* of computer
 <details>
 <summary>Deep dive: Why supercomputing? (Optional)</summary>
 
-> [!info] Deep dive: Why supercomputing?
-> You might wonder why we connect thousands of computers together instead of just building one giant one. To learn about how supercomputers use **parallel processing** to solve massive AI challenges (and how they differ from your laptop), check out the article: 
->
-> [Why supercomputing and LUMI?](https://lumi-ai-factory.eu/articles/blog-why-supercomputing-and-lumi/) **(Optional)**
+You might wonder why we connect thousands of computers together instead of just building one giant one. To learn about how supercomputers use **parallel processing** to solve massive AI challenges (and how they differ from your laptop), check out the article:
+[Why supercomputing and LUMI?](https://lumi-ai-factory.eu/articles/blog-why-supercomputing-and-lumi/) **(Optional)**
 
 </details>
 
@@ -73,10 +71,12 @@ Within each of those hardware Partitions%, the Slurm scheduler further divides r
 
 [Full list of Slurm Partitions](https://docs.lumi-supercomputer.eu/runjobs/scheduled-jobs/partitions/) **(Optional)**
 
-### Exclusive vs. shared nodes
-When you book resources from the `standard-g` Partition, Slurm allocates **entire physical nodes exclusively to you**. You are the only person running code on that machine, and you are billed for all 8 GPUs on it, even if your code only uses 1.
+### Exclusive vs. shared nodes (allocatable by node vs resources)
+When you book resources from the `standard-g` Partition, this is **allocatable by node**. Slurm allocates **entire physical nodes exclusively to you**. You are the only person running code on that machine, and you are billed for all 8 GPUs on it, even if your code only uses 1.
 
-However, if you only need 1 or 2 GPUs for a smaller task, booking a whole node would be a massive waste of resources and credits. This is where `small-g` and `dev-g` come in. These are **shared Partitions**. When you request just 1 GPU on `small-g`, Slurm might place your Job on the exact same physical server as another user who requested 2 GPUs. You are "sharing" the node, meaning you are both running programs on the exact same underlying operating system at the exact same time!
+Therefore, if you only need 1 or 2 GPUs for a smaller task, booking a whole node would be a massive waste of resources and credits. This is where `small-g` and `dev-g` come in. These are **allocatable by resources** (shared Partitions). When you request just 1 GPU on `small-g`, Slurm might place your Job on the exact same physical server as another user who requested 2 GPUs. You are "sharing" the node, meaning you are both running programs on the exact same node simultaneously.
+
+The `dev-g` partition has shorter maximum job times (2 hours) but allows you to get resources faster for debugging or testing. Meanwhile, `small-g` is intended for longer jobs that do not need a full node.
 
 ### Inside a LUMI-G Compute Node (the hardware%)
 

@@ -261,6 +261,21 @@ To find out more about GPU, CPU and storage billing:
 
 [Read the official Breakdown of LUMI Billing Policies](https://docs.lumi-supercomputer.eu/runjobs/lumi_env/billing/) **(Optional)**
 
+## Job priority and practical advice
+
+### How priority works
+It is important to reserve only what you need in terms of time and the size of the allocation (in slices). Slurm is not a simple first-come-first-serve queue. Priority is a combination of:
+- The size of your Job and requested time (bigger or longer jobs typically queue for longer).
+- How much you have run lately (your "fair share" - the more jobs you've submitted recently, the lower your current priority).
+- How long the Job has been waiting in the queue (the longer a job waits, the higher its priority becomes).
+
+Especially in the beginning, you should not have problems getting resources allocated reasonably fast.
+
+### Practical workflow advice
+We highly suggest starting with partitions allocatable by resources (`dev-g` or `small-g`) and reserving multiples of slices (e.g., *n* × [1 GCD, 7 CPU cores, 60 GB of RAM]) to understand how your workload runs on LUMI-G. 
+
+While testing, you can check the GPU utilisation by running the `rocm-smi` command from within the Compute Node's shell% (for example, during an Interactive Job). Once you are convinced that your workload efficiently utilises the GPUs and you actually require full nodes, you can confidently move your workloads to `standard-g`.
+
 ## Summary checklist
 - You understand how Slurm schedules Jobs.
 - You can write a basic Slurm Batch Script.
