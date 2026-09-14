@@ -42,7 +42,7 @@ At the end of each chapter, you will find **a quiz** to check your understanding
 
 ## Time commitment
 
-If you are completely new to the command line and supercomputing, expect to spend **8 or more hours** to complete this onboarding. 
+If you are completely new to the Command Line and supercomputing, expect to spend **8 or more hours** to complete this onboarding. 
 
 While the guides are step-by-step and beginner-friendly, transitioning from a personal laptop to a supercomputer is a big jump. There is a lot of new ground to cover.
 
