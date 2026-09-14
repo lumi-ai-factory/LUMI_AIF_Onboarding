@@ -46,7 +46,7 @@ The best way to learn after having studied some theory is to **practise**. Log i
 > We highly recommend typing the commands out yourself rather than copy-pasting them. Writing them manually helps build muscle memory so you can use them naturally later!
 
 1. **Where am I?**
-    When you log into LUMI using `ssh` as we did in Chapter 2, you end up in your user's `$HOME` folder (this is the current 'Working Directory%'). Check it by running:
+    When you log into LUMI using `ssh` as we did in Chapter 2, you end up in your user's `$HOME` folder (this is the current "Working Directory%"). Check it by running the `pwd` (**p**rint **W**orking **D**irectory) command:
 
     ```bash
     pwd
@@ -54,7 +54,7 @@ The best way to learn after having studied some theory is to **practise**. Log i
 
     The output (what is printed/shown on the screen) should be `/users/<username>`. This is "where you are" now. 
 
-2. **Create a directory%** and name it 'first_dir':
+2. **Create a directory%** and name it "first_dir" using `mkdir` (**m**a**k**e **dir**ectory):
 
     ```bash
     mkdir first_dir
@@ -68,7 +68,7 @@ The best way to learn after having studied some theory is to **practise**. Log i
 
     You should see your new directory% there. 
 
-3. **Move Inside.** Change your Working Directory% to the new directory: 
+3. **Move Inside.** Change your Working Directory% to the new directory using `cd` (**c**hange **d**irectory): 
 
     ```bash
     cd first_dir
@@ -100,14 +100,14 @@ The best way to learn after having studied some theory is to **practise**. Log i
     > [!tip] Autocomplete
     > Instead of typing the whole name of an existing file (such as in step 5), you can type the first few characters of its name (such as `less fir`) and press TAB, it will automatically finish the name. If there are multiple files that start with the same few characters, press TAB twice to see available options. 
 
-6. **Upload a file.** To upload an image from your machine (PC/laptop) to LUMI, one way is to use the web interface:
+6. **Upload a file.** Even though we are working in the Command Line, using the web interface is the simplest way to upload a small file from your machine (PC/laptop) to LUMI:
     - Open [www.lumi.csc.fi](https://www.lumi.csc.fi) in your browser (don't close your Terminal!), log in and go to `Home directory`. This is your `$HOME` user directory. There you should see our `first_dir` folder (do **not** click into it so your upload lands in `$HOME`, not inside `first_dir`).
-    - Click "Upload" and upload your image directly to your `$HOME` directory. 
+    - Click "Upload" and select any image from your computer to upload directly to your `$HOME` directory. If you don't have one at hand, download a random image from the internet for this exercise.
 
     > [!tip] Using `scp`
-    > Another, more 'professional' way of uploading files is to use `scp` command as [described here](https://docs.lumi-supercomputer.eu/firststeps/movingdata/) **(Optional)**.
+    > A more practical and scalable way of uploading files is to use the `scp` command in the Command Line, as [described here](https://docs.lumi-supercomputer.eu/firststeps/movingdata/) **(Optional)**.
 
-7. **Go back.** Open your Terminal. Go back to the "Parent Directory%" of the current Working Directory: 
+7. **Navigate to the Parent Directory.** Open your Terminal. Return to the "Parent Directory%" of the current Working Directory: 
 
     ```bash
     cd ..
@@ -115,7 +115,7 @@ The best way to learn after having studied some theory is to **practise**. Log i
 
     Now, when you're in your `$HOME` directory you should see the file that you uploaded there (Hint: use `ls` to check that it's there).
 
-8. **Copy the uploaded image** to the new directory. Replace `<your_image.png>` with the actual name of your file (using its actual extension, like `.jpg` or `.jpeg` if it's not a `.png`), and run:
+8. **Copy the uploaded image** to the new directory using `cp` (**c**o**p**y). Replace `<your_image.png>` with the actual name of your file (using its actual extension, like `.jpg` or `.jpeg` if it's not a `.png`), and run:
 
     ```bash
     cp <your_image.png> first_dir
@@ -123,13 +123,13 @@ The best way to learn after having studied some theory is to **practise**. Log i
 
     Change your Working Directory to `first_dir` and list the files in it. Hint: look at steps 2 and 3.
 
-9. **Rename the copied image**. Let's rename it to `renamed_image.png` (using your file's actual extension if it's not `.png`, like `renamed_image.jpg`). We use the `mv` (move) command for this, as renaming is essentially moving a file to the same location under a new name:
+9. **Rename the copied image**. Let's rename it to `renamed_image.png` (using your file's actual extension if it's not `.png`, like `renamed_image.jpg`). We use the `mv` (**m**o**v**e) command for this, as renaming is essentially moving a file to the same location under a new name:
 
     ```bash
     mv <your_image.png> renamed_image.png
     ```
 
-10. **Delete the original image**. Remove the original image that we left in the Parent Directory:
+10. **Delete the original image**. Use `rm` (**r**e**m**ove) to delete the original image that we left in the Parent Directory:
 
     ```bash
     rm ../<your_image.png>
@@ -161,7 +161,7 @@ You can learn more about Linux Command Line on the [Linux basics tutorial for CS
 | `ls` | **L**i**s**t | Show all files and folders here. |
 | `mkdir <name>` | **M**ake **D**irectory | Create a new folder. |
 | `cd <name>` | **C**hange **D**irectory | Enter a folder. |
-| `cd ..` | Go Back | Move up to the "parent" folder. |
+| `cd ..` | Navigate Up | Move up to the "parent" folder. |
 | `nano <file>` | Text Editor | Create or edit text files. |
 | `less <file>` | View File | Read a file without editing it (press **q** to exit). |
 | `cp <old> <new>` | **C**o**p**y | Copy a file to a new location (or/and under a new name). |

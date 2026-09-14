@@ -32,7 +32,7 @@ Here is what a simple AI script may look like:
 #SBATCH --account=project_462xxxxxx      # Identifies your organisation's project
 #SBATCH --partition=small-g              # Choosing the Slurm Partition and the hardware Partition (-g for GPU)
 #SBATCH --nodes=1                        # Requesting 1 physical server node
-#SBATCH --ntasks-per-node=1              # Run one instance ('task') of the script at a time 
+#SBATCH --ntasks-per-node=1              # Run one instance ("task") of the script at a time 
 #SBATCH --cpus-per-task=14               # The number of CPU cores, in this case per task
 #SBATCH --gpus-per-node=2                # Requesting 2 AMD GCDs (1 full GPU) on that node
 #SBATCH --mem-per-gpu=60G                # 60GB of RAM per GPU
@@ -60,7 +60,7 @@ srun singularity run /appl/local/laifs/containers/lumi-multitorch-latest.sif pyt
 
 
 ## Handing the ticket to Slurm
-LUMI AI Guide and examples of AI scripts usually contain this Slurm script and you only need to edit it with your actual `project_` which will be 'billed' for the Job.
+LUMI AI Guide and examples of AI scripts usually contain this Slurm script and you only need to edit it with your actual `project_` which will be "billed" for the Job.
 Once you've edited this file (let's call it `run_ai.sh`), you submit it to the queue using the `sbatch` command in your Terminal:
 
 ```bash
@@ -77,7 +77,7 @@ First, let's create the Batch Script%. Navigate to your project's `/scratch`% di
 #SBATCH --account=project_462xxxxxx      # Identifies your organisation's project
 #SBATCH --partition=dev-g                # Choosing the Slurm Partition and the hardware Partition (-g for GPU)
 #SBATCH --nodes=1                        # Requesting 1 physical server node
-#SBATCH --ntasks-per-node=1              # Run one instance ('task') of the script at a time 
+#SBATCH --ntasks-per-node=1              # Run one instance ("task") of the script at a time 
 #SBATCH --cpus-per-task=14               # The number of CPU cores, in this case per task
 #SBATCH --gpus-per-node=2                # Requesting 2 AMD GCDs (1 full GPU) on that node
 #SBATCH --mem-per-gpu=60G                # 60GB of RAM per GPU
@@ -96,13 +96,13 @@ export MIOPEN_CUSTOM_CACHE_DIR=$MIOPEN_DIR/cache
 export MIOPEN_USER_DB=$MIOPEN_DIR/config
 
 # We use the PyTorch Container provided by the LUMI AI Factory Services, which contains vLLM - an engine library for running LLMs.
-# For this exercise we point to one exact dated Container, so the exercise works the same for every reader. For your own projects, using 'lumi-multitorch-latest.sif' is a good default.
+# For this exercise we point to one exact dated Container, so the exercise works the same for every reader. For your own projects, using `lumi-multitorch-latest.sif` is a good default.
 export SIF=/appl/local/laifs/containers/lumi-multitorch-u24r70f21m50t210-20260415_130625/lumi-multitorch-full-u24r70f21m50t210-20260415_130625.sif
 
 # Redirect all vLLM cache files from $HOME to scratch.
 export VLLM_CACHE_ROOT=/scratch/$SLURM_JOB_ACCOUNT/vllm-cache
 
-# Where the models are downloaded (the 'weights'). $SLURM_JOB_ACCOUNT automatically finds your project ID on LUMI. 
+# Where the models are downloaded (the "weights"). $SLURM_JOB_ACCOUNT automatically finds your project ID on LUMI. 
 export HF_HOME=/scratch/$SLURM_JOB_ACCOUNT/hf-cache/
 
 # Choose the LLM to run (from https://huggingface.co/ )

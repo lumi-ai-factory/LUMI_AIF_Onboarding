@@ -13,7 +13,7 @@ GitHub is the world’s largest platform for hosting and sharing code. A lot of 
 ## Why do we use it on LUMI?
 The AI community moves incredibly fast. Instead of downloading a static "version 1.0" zip file that becomes outdated in a week, we use GitHub to download the project in a way that lets us easily pull in (download) the latest updates.
 
-The good news? Git% (the tool used to talk to GitHub) is already installed and configured for everyone on LUMI. You don't need to install anything to start using it.
+The good news? Git (the tool used to talk to GitHub) is already installed and configured for everyone on LUMI. You don't need to install anything to start using it.
 
 
 ## Getting the code: `git clone`%
@@ -35,7 +35,7 @@ A new directory will appear on your LUMI storage (e.g., in your `/scratch`% dire
 
 
 ## Staying up to date: `git pull`%
-AI developers frequently update their code (including LUMI guides and examples) to fix bugs or improve performance. If there has been new work published in the Repository, it doesn't automatically get reflected in your LUMI directory of the Repository. To 'update' the directory and download the new changes, navigate inside your project directory and run:
+AI developers frequently update their code (including LUMI guides and examples) to fix bugs or improve performance. If there has been new work published in the Repository, it doesn't automatically get reflected in your LUMI directory of the Repository. To "update" the directory and download the new changes, navigate inside your project directory and run:
 
 ```bash
 git pull
@@ -44,9 +44,13 @@ git pull
 This command checks GitHub for any new changes and "pulls" them down to your LUMI directory.
 
 ## Learn more
-Git is a deep and powerful tool used by professional developers. While clone and pull are enough to get you started as a user, you may eventually want to learn how to save your own changes and contribute back. For that, we recommend reading GitHub's short official introduction to Git and its basic commands:
+Git is a deep and powerful tool used by professional developers. While clone and pull are enough to get you started as a user of someone else's code, you may eventually want to learn how to save your own changes and contribute back. For that, we recommend reading GitHub's short official introduction to Git and its basic commands:
 
 [About Git](https://docs.github.com/en/get-started/using-git/about-git) **(Optional)**
+
+Or, for a more comprehensive, self-paced lesson that is also part of the LUMI training ecosystem, you can check out:
+
+[CodeRefinery: Introduction to version control with Git](https://coderefinery.github.io/git-intro/) **(Optional)**
 
 ## Summary checklist
 - You understand what GitHub is and why it is used on LUMI.

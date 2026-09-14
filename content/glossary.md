@@ -30,6 +30,7 @@ A quick reference for all technical terms used in this guide, listed by chapter.
 | **SSH** | Secure Shell. A protocol for securely connecting to a remote computer over the internet. |
 | **phishing** | A type of cyberattack where attackers deceive people into revealing sensitive information, such as passwords, by pretending to be a trustworthy entity. |
 | **cryptographic** | A secure way of protecting information using mathematical algorithms so that only the right people can access it. |
+| **SSH Keys** | A pair of cryptographic keys (one public, one private) used to authenticate your identity when connecting to LUMI. |
 | **SSH Key Pair** | A pair of cryptographic keys (one public, one private) used to authenticate your identity when connecting to LUMI. |
 | **Private Key** | The secret half of your SSH Key Pair. It stays on your computer and should never be shared. |
 | **Public Key** | The shareable half of your SSH Key Pair. You upload it to the LUMI portal so LUMI can verify your identity. |
@@ -92,6 +93,7 @@ A quick reference for all technical terms used in this guide, listed by chapter.
 |:-----|:-----------|
 | **Lustre** | LUMI's high-performance filesystem, optimised for large files but sensitive to many small files. |
 | **pip** | Python's standard package manager - a tool that automatically downloads and installs Python libraries from the internet. |
+| **`pip list`** | A command to display all Python packages (libraries) currently installed in your environment or Container. |
 | **library** | A collection of pre-written code that you can plug into your own programs to perform common tasks (e.g., PyTorch for AI calculations). |
 | **software** | The programs, applications, and scripts that run on the hardware to perform tasks. |
 | **Container** | A single `.sif` file that packages all your software, libraries, and dependencies into one "box." |

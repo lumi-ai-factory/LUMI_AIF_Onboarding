@@ -5,7 +5,7 @@ nav_order: 8
 
 # Chapter 8: Graduation & next steps
 
-Congratulations! You have successfully completed the LUMI AI Factory onboarding. You've progressed from learning how to securely log in with SSH Keys (Chapter 2) and navigating the Command Line% (Chapter 3), to understanding LUMI's powerful hardware% and storage architecture (Chapter 4). You also learned how to use Apptainer% / Singularity% Containers% for reproducible AI environments (Chapter 5), how to retrieve code from GitHub% (Chapter 6), and finally, how to request compute resources from Slurm% to run your first AI Job (Chapter 7). You now possess the foundational "survival skills" needed to harness one of the world's most powerful supercomputers.
+Congratulations! You have successfully completed the LUMI AI Factory onboarding. You've progressed from learning how to securely log in with SSH Keys (Chapter 2) and navigating the Command Line% (Chapter 3), to understanding LUMI's powerful hardware% and storage architecture (Chapter 4). You also learned how to use Singularity% Containers% for reproducible AI environments (Chapter 5), how to retrieve code from GitHub% (Chapter 6), and finally, how to request compute resources from Slurm% to run your first AI Job (Chapter 7). You now possess the foundational "survival skills" needed to harness one of the world's most powerful supercomputers.
 
 > [!warning] We would love to hear your feedback!
 > These materials are in active development. If you have suggestions, encounter difficulties, or want to share your experience, please fill out our [short feedback form](https://link.webropolsurveys.com/S/574AE9D8B276E808). It only takes a few minutes and helps us improve the guide for everyone.

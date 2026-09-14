@@ -16,7 +16,7 @@ LUMI uses a specialised high-performance storage system called **Lustre%**. Lust
 A typical `pip install` of a library% like PyTorch% creates tens of thousands of tiny files. If everyone ran it, the filesystem would struggle to keep track of millions of tiny files, slowing down the entire supercomputer for everyone.
 
 ## The solution: Containers
-To avoid the "Million File" problem, we use Containers. On LUMI, our Container tool of choice is called 'Singularity' (nowadays also known under its new name, 'Apptainer').
+To avoid the "Million File" problem, we use Containers. On LUMI, our Container tool of choice is called `Singularity` (nowadays also known under its new name, `Apptainer`).
 
 **What is a Container?** 
 
@@ -27,8 +27,8 @@ On LUMI, this "box" is a single file (usually ending in `.sif`).
 - **For Lustre:** Instead of tracking 20,000 tiny files, it only has to track one big Container file. This keeps the system fast.
 - **For You:** Your software is "frozen" inside that box. This means it will work exactly the same way every time, regardless of what updates happen to the rest of the supercomputer.
 
-> [!note] Why Apptainer instead of Docker?
-> Apptainer was built specifically for supercomputers. It allows you to run the same "boxes" as Docker%, but it does so securely without needing administrative privileges ("root").
+> [!note] Why Singularity instead of Docker?
+> Singularity was built specifically for supercomputers. It allows you to run the same "boxes" as Docker%, but it does so securely without needing administrative privileges ("root").
 
 
 ## How to get your AI software
@@ -49,7 +49,7 @@ Below are the three main ways to interact with a Container. If you would like to
     ```
     *(Type `exit` or press **Ctrl+D** to leave the container when you are done).*
 
-2) **Execute a single command:** The second way is to execute a command in the Container is with `singularity exec`, which enters the Container, executes the command and immediately exits the Container. For example, to list the libraries without staying inside:
+2) **Execute a single command:** The second way to execute a command in the Container is with `singularity exec`, which enters the Container, executes the command and immediately exits the Container. For example, to list the libraries without staying inside:
 
     ```bash
     singularity exec <container.sif> pip list
@@ -70,7 +70,7 @@ Below are the three main ways to interact with a Container. If you would like to
 
 
 ## Modules
-Besides Containers, we use something called 'Modules'. These are software packages already installed by the LUMI staff. You "load" them into your session with a simple command, similar to turning on a light switch:
+Besides Containers, we use something called "Modules". These are software packages already installed by the LUMI staff. You "load" them into your session with a simple command, similar to turning on a light switch:
 
 ```bash
 module purge
@@ -114,7 +114,7 @@ If you find a Container that is almost perfect but is missing one specific libra
 ## Summary checklist
 - You understand that Lustre is great for big files, but struggles with many small files.
 - You understand that pip install can slow down the system for everyone by creating too much "metadata."
-- You understand that Apptainer is the secure, supercomputer-friendly alternative to Docker that turns thousands of files into one easy-to-manage .sif file.
+- You understand that Singularity is the secure, supercomputer-friendly alternative to Docker that turns thousands of files into one easy-to-manage .sif file.
 
 ## Knowledge check
 
@@ -130,12 +130,12 @@ Q: Why is running a standard `pip install` directly on the LUMI filesystem gener
 
 ---
 
-Q: Which of the following best describes Apptainer (previously Singularity)?
+Q: Which of the following best describes Singularity?
 - [ ] A command-line tool for submitting your AI training Jobs to the Slurm scheduler.
 - [x] A secure Container platform designed specifically for supercomputers that bundles all your software into a single `.sif` file.
 - [ ] A high-speed storage tier on LUMI used exclusively for downloading Python libraries.
 - [ ] A specialised Python library used to compile code for AMD GPUs.
-> Apptainer takes what would be tens of thousands of small files and packages them into one easy-to-manage `.sif` file, while safely running without needing dangerous administrative (root) privileges like Docker does.
+> Singularity takes what would be tens of thousands of small files and packages them into one easy-to-manage `.sif` file, while safely running without needing dangerous administrative (root) privileges like Docker does.
 
 ---
 

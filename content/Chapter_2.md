@@ -30,7 +30,6 @@ Before you generate your keys and follow the official guide, please read these i
 - **Strong passphrase:** When the guide asks you for a "passphrase%," choose something you can remember. This adds a second layer of security: even if someone stole your laptop, they couldn't use your Key without that phrase.
 - **The silent passphrase:** When you are asked for your passphrase in the Terminal, you won't see any characters appear as you type (not even stars). This is a normal security feature so that people who see your screen can't know even the number of characters in your passphrase. Just type your phrase and hit Enter!
 - **Multiple devices:** If you use multiple computers (e.g., a laptop and a desktop), generate a new, separate Key Pair on each device. Uploading multiple Public Keys to the LUMI portal simply gives each device its own independent access - any of them will log you into the exact same LUMI account.
-- **Placeholder values:** In this guide, `<angle brackets>` indicate a placeholder - replace the entire thing, **brackets included**, with your own value. Make sure to remove the `< >` brackets! For example, `<your_lumi_username>` becomes `smithmar`.
 
 The exact command and steps vary slightly depending on whether you are using Windows, macOS, or Linux. Make sure to select the "From a terminal (all OS%)" tab in the guide below, even if you are on Windows.
 
@@ -42,9 +41,12 @@ Make sure that you have uploaded your Public Key to the correct portal as descri
 ## Step 2: Logging into LUMI
 Once your "Lock" (Public Key) is uploaded to the portal, you are ready to enter the "Lobby" of the supercomputer. We do this by "SSH%ing" into the system.
 
-### Option A: The professional way (Terminal)
+### Option A: The classic way (Terminal)
 
-This is how AI developers typically work. You open your Terminal and type a command to 'enter' LUMI. Once the connection is established, your Terminal window is no longer talking to your laptop; it is talking directly to LUMI.
+This is how AI developers typically work. You open your Terminal and type a command to "enter" LUMI. Once the connection is established, your Terminal window is no longer talking to your laptop; it is talking directly to LUMI.
+
+> [!note] Placeholder values:
+> In this guide, `<angle brackets>` indicate a placeholder - replace the entire thing, **brackets included**, with your own value. Make sure to remove the `< >` brackets! For example, `<your_lumi_username>` becomes `smithmar`.
 
 [How to Log In via Terminal for the first time (SSH Client)](https://docs.lumi-supercomputer.eu/firststeps/loggingin/)
 
@@ -90,7 +92,7 @@ Once you have logged into the web interface, click on the **Login Node Shell** b
 
 As an industry partner, your code and data are your most valuable assets. To keep them safe:
 - Never share your Private Key. With anyone.
-- Use a passphrase. It’s the 'password' for your digital key.
+- Use a passphrase. It's the "password" for your digital key.
 - One Key per Device. If you work from both a desktop and a laptop, generate a new Key Pair on each device and upload each Public Key to the portal.
 - If a device is lost or compromised, you should remove its Public Key from the portal.
 
