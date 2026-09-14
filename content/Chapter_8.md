@@ -157,12 +157,12 @@ Q: Which tools does the guide recommend for moving data onto LUMI?
 
 ---
 
-Q: Instead of using `pip install` to build your environment directly on the Lustre file system, LUMI recommends using Apptainer. What is the primary benefit of Apptainer on a supercomputer?
+Q: Instead of using `pip install` to build your environment directly on the Lustre file system, LUMI recommends using Singularity. What is the primary benefit of Singularity on a supercomputer?
 - [x] It packages your entire environment into a single `.sif` file, bypassing Lustre's weakness with thousands of tiny files.
 - [ ] It automatically converts Python code to C++ for faster execution.
 - [ ] It is the only way to request GPU resources from Slurm.
 - [ ] It provides a graphical desktop interface.
-> Lustre hates millions of tiny files. Apptainer solves this by bundling them into one large, efficient file.
+> Lustre hates millions of tiny files. Singularity solves this by bundling them into one large, efficient file.
 
 ---
 
